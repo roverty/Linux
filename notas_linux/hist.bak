@@ -1,0 +1,758 @@
+history 
+clear
+iw list
+sudo vim /etc/NetworkManager/NetworkManager.conf 
+sudo vim /etc/NetworkManager/system-connections/
+vim /etc/NetworkManager/system-connections/
+startx
+startx ~/.xinitrc chromium
+shutdown now
+vim notasSamba
+exit
+sudo su
+systemctl start named
+sudo samba-tool domain provision --server-role=dc --use-rfc2307 --dns-backend=SAMBA_INTERNAL --realm=SAMDOM.RHOPTC.COM --domain=SAMDOM --adminpass=9632145Smb
+sudo rm /etc/samba/smb.conf 
+sudo rm /etc/krb5.conf 
+clear
+cat /etc/samba/smb.conf 
+clear
+klist
+kinit administrator
+vim /etc/hosts
+sudo vim /etc/resolv.conf 
+host -t SRV _ldap._tcp.samdom.rhoptc.com.
+sudo vim /etc/resolv.conf 
+smbclient -L localhost -U%
+sudo samba
+sudo cp /var/lib/samba/private/krb5.conf /etc/krb5.conf
+ifconfig 
+sudo vim /etc/resolv.conf 
+systemctl start named
+cat /etc/hosts
+sudo samba-tool domain provision --server-role=dc --use-rfc2307 --dns-backend=SAMBA_INTERNAL --realm=SAMDOM.RHOPTC.COM --domain=SAMDOM --adminpass=9632145Smb
+samba-tool domain provision --server-role=dc --use-rfc2307 --dns-backend=SAMBA_INTERNAL --realm=SAMDOM.RHOPTC.COM --domain=SAMDOM --adminpass=9632145Smb
+sudo rm /etc/krb5.conf 
+sudo rm /var/lib/samba/private/*.tdb 
+sudo rm /var/lib/samba/*.tdb 
+sudo rm /var/cache/samba/*.tdb 
+rm /var/cache/samba/*.tdb 
+smbd -b | egrep "LOCKDIR|STATEDIR|CACHEDIR|PRIVATE_DIR"
+sudo vim /etc/hosts
+cat /etc/host
+cat /etc/host.conf 
+clear
+sudo rm /etc/samba/smb.conf 
+sudo rm /etc/samba/private/krb5.conf
+sudo systemctl stop winbindd.service 
+sudo systemctl stop nmbd
+sudo systemctl stop smbd
+sudo systemctl stop named
+sudo systemctl stop samba
+cat /etc/resolv.conf 
+kinit administrator
+sudo cp /var/lib/samba/private/krb5.conf /etc/krb5.conf 
+sudo ls /etc/samba/private/
+ls /etc/samba/private/
+cat /etc/krb5.conf
+host -t SRV _ldap._tcp.samdom.rhoptc.com
+host -t SRV samdom.rhoptc.com
+host -t SRV _ldap._tcp.samdom.rhoptc.com.
+systemctl status samba
+systemctl start samba
+smbclient //localhost/netlogon -UAdministrator -c 'ls'
+host -t SRV _ldap._tcp.samdom.example.com.
+host -t SRV _ldap._tcp.samdom.example.com
+sudo samba
+sudo cp /var/lib/samba/private/krb5.conf /etc/samba/private/
+cp /var/lib/samba/private/krb5.conf /etc/samba/private/
+sudo samba-tool domain provision --use-rfc2307 --interactive
+host -t A dc1.samdom.thinkpad.com.
+host -t SRV _kerberos._udp.samdom.thinkpad.com.
+host -t SRV _kerberos._udp.samdom.example.com.
+host -t SRV _ldap._tcp.samdom.thinkpad.com.
+smbclient -L localhost -U%
+samba
+cat /var/lib/samba/private/krb5.conf 
+host -t A dc1.samdom.rho.com.
+host -t SRV _kerberos._udp.samdom.rho.com.
+host -t SRV _ldap._tcp.samdom.rho.com.
+whereis krb5.conf
+cat /etc/krb5.conf 
+sudo cat /usr/local/samba/private/krb5.conf
+cat /usr/local/samba/private/krb5.conf
+ls /usr/local/samba/private/krb5.conf
+sudovim /etc/resolv.conf 
+vim /etc/resolv.conf 
+sudo systemctl start named
+sudo pacman -S bind
+sudo pacman -S bind-utils
+sudo pacman -S bind-utils bind
+sudo pacman -S bind-util bind
+samba-tool domain provision --use-rfc2307 --interactive
+kinit root
+sudo kinit root
+sudo kinit administrator
+host -t A dc1.sambadom
+host -t SRV _ldap._tcp.sambadom.com.
+host -t SRV _ldap._tcp.sambadom
+host -t SRV _ldap._tcp.sambdom.example.com
+host -t SRV sambadom
+host -t SRV 
+host
+sudo pacman -S bind-tools
+bind-tools
+bind
+sudo pacman -S nslookup
+nslookup
+nsloopup
+sudo pacman -S host
+man hostname
+man host
+man hostnamectl 
+hostnamectl -t SRV
+hostnamectl 
+hostid 
+hostname 
+winbindd 
+systemctl status smbd.service
+status
+systemctl restart samba
+systemctl retart samba
+sudo pdbedit -L
+pdbedit -L
+testparm 
+sudo systemctl status samba
+sudo systemctl start samba
+journalctl -xe
+sudo systemctl start smbd 
+sudo systemctl start smbd nmbd
+sudo nmbd -l /var/log/samba/
+nmbd -l /var/log/samba/
+smbd -l /var/log/samba/
+journalctl -ex smbd
+journalctl -xe smbd
+systemctl status smbd
+sudo smbpasswd -L
+smbpasswd -L
+sudo smbstatus 
+smbstatus 
+sudo pdbedit -L -v
+smbpasswd -list
+smbpasswd -l
+sudo samba-tool domain provision
+samba-tool domain provision
+ls /etc/samba/
+sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.bak
+cp /etc/samba/smb.conf /etc/samba/smb.conf.bak
+sudo swapon /dev/sda1
+startx
+chromium
+sudo pacman -S chromium
+rm -r .config/chromium/
+ls .config/chromium/
+ls .config
+ls /
+ls /usr/bin/
+ls /usr/
+ls /opt/
+firefox
+sudo pacman -Rs chromium
+sudo pacman -Rsy chromium
+chromium -private
+whereis chromium
+sudo pacman -S firefox
+reboot
+bash
+shutdown now
+vim
+pkill -15 Xorg
+ls
+sudo systemctl start sshd
+exit
+vim /etc/samba/smb.conf
+poweroff 
+chromium --private
+talk prebes36
+sudo wall msg.txt 
+vi msg.txt
+sudo wall hola
+sudo wall "hola"
+wall -g prebes36 "hola" 
+wall -g 1004 "hola" 
+man -g 1004 wall 
+man wall 
+wall "hola"
+sudo su prebes36 
+echo "helo" | wall
+wall tontos
+okular 
+yaourt foxitreader
+yaourt -S foxitreader
+ls -la
+!
+cinnamon
+dir
+vim apuntes
+cd assembler/
+cd
+cd Facultad_Ingenieria/Semestre-4/estructura_prog_comp/
+cd /data/
+sudo mount -t vfat /dev/sda2 /data -O rw,iud='(id -u)',gid='(id -g)'
+sudo umount /home/rho/usb 
+cp usb/E-books/matematicas/Charles\ H.\ Lehmann.\ Geometría\ analítica.pdf .
+sudo mount -t vfat /dev/sdb1 /home/rho/usb/ 
+sudo dosfsck -r -w /dev/sdb1
+dosfsck -r -w /dev/sdb1
+sudo dosfsck -a /dev/sdb1
+dosfsck -a /dev/sdb1
+dosfsck 
+ls usb/
+sudo fsck -y /dev/sdb1
+fsck -y /dev/sdb1
+fsck -Af -M /dev/sdb1
+chkdsk
+/home/rho/usb/E-books/matematicas/Charles H. Lehmann. Geometría analítica.pdf
+sudo ntfsfix /dev/sdb1
+ntfsfix /dev/sdb1
+rsync usb/E-books/matematicas/Charles\ H.\ Lehmann.\ Geometría\ analítica.pdf .
+man rsync
+sudo pacman -S rsync
+info rsync
+sudo e2fsck -f /dev/sdb1
+strings Charles\ H.\ Lehmann.\ Geometría\ analítica.pdf 
+file Charles\ H.\ Lehmann.\ Geometría\ analítica.pdf 
+startx ~/.xinitrc okular
+umount /data/
+chromium 
+okular Charles\ H.\ Lehmann.\ Geometría\ analítica.pdf 
+sudo umount /data/
+umount /da
+cp 'Charles H. Lehmann. Geometría analítica.pdf' /data/E-books/matematicas/
+cd E-books/matematicas/
+cd usb/
+ls /data/ -la
+ls /data/ -l
+ls /data/ --all 
+ls /data/
+cp -r usb/* /data/ &
+sudo mount -t vfat /dev/sdb /home/rho/usb/ 
+ls  /
+lsblk
+random 
+rm -r *
+sudo systemctl disable lightdm.service 
+kill -1 855
+top
+kill -1 1811
+cp -r * /data/
+rm -r /data/*
+rm /data/*
+cp /run/media/rho/MALAINDA/ISO/Windows10_prox_64.iso /data/
+sudo dd if=Windows10_prox_64.iso of=/dev/sdb bs=4M
+ping 8.8.8.8
+python
+sudo pacman -Syyu
+sudo systemctl restart lightdm.service 
+ls -l
+!!
+echo "helo"
+okular ./Documentos/.passwd.pdf 
+cp -r * /run/media/rho/DATA
+rm -r '$RECYCLE.BIN/' 'System Volume Information/' FOUND.000/
+rm '$RECYCLE.BIN/' 'System Volume Information/' FOUND.000/
+lsblk 
+sudo systemctl start lightdm.service 
+sudo vi /etc/lightdm/lightdm.conf
+pacman -Ss greeter
+sudo pacman -S lightdm-gtk-greeter lightdm-gtk-greeter-settings
+sudo lightdm -d
+lightdm -d
+man lightdm
+systemctl status lightdm.service
+sudo systemctl enable lightdm.service 
+sudo pacman -S lightdm
+iwconfig python
+swapon /dev/sda1
+sudo ifconfig wlp3s0 up
+sudo ifconfig wlp3s0 down
+poweroff
+rm editor.bak.java 
+youtube-dl "https://www.youtube.com/watch?v=gfjqCD-akv4&t=839s"
+vim editor.bak.java
+nemo
+git clone https://github.com/sparkyman215/GUI-TextEditor.git
+cd /data/Tmp/
+man mag
+mag 
+./install.sh 
+chmod 755 install.sh 
+cd ./
+cd .
+yaourt xzoom
+vim Mesa.java 
+vim Filosofo.java 
+java Main
+javac Main.java 
+unzip Filosofos.zip 
+java -jar Connect-4.jar 
+cd Connect-4/
+git clone https://github.com/Iptamenos/Connect-4.git
+netbeans 
+sudo vim /usr/share/netbeans/etc/netbeans.conf 
+cd ../..
+man netbeans 
+man netbean
+man netbeans
+vim /usr/share/netbeans/etc/netbeans.conf 
+cd bin/
+cd jre/
+cd java-8-openjdk/
+cd /usr/lib/jvm/
+vim .bashrc 
+java -version
+yaourt jdk
+netbeans --jdkhome
+cd java-9-openjdk/
+cd /usr/share/java/
+readlink -f '(which java)'
+cd /usr/bin/java
+ls /usr/bin/java
+ls /usr/share/java/
+/usr/share/java/
+whereis java
+which java
+man java 
+java -v
+locate jdk
+vim netbeans.conf 
+cd etc/
+cd /usr/share/netbeans/
+cd modules/
+cd org/netbeans/
+cd Preferences
+cd config/
+~/.netbeans/8.2/
+~/.netbeans/version/etc/ne
+sudo pacman -S netbeans
+mksh
+cat /etc/shells 
+sudo pacman -S mksh
+data
+po
+bash data
+youtube-dl "https://www.youtube.com/watch?v=fzPBAp14R98"
+youtube-dl "https://www.youtube.com/watch?v=zAGn--QNmg8"
+youtube-dl "https://www.youtube.com/watch?v=NxhtMkL0cig"
+youtube-dl "https://www.youtube.com/watch?v=V-hEZLu164c&t=1s"
+youtube-dl "https://www.youtube.com/watch?v=q-kAojXbJX4"
+youtube-dl -f 137 "https://www.youtube.com/watch?v=q-kAojXbJX4"
+./wps
+cd wps/wps-office_10.1.0.5707~a21_x86_64/
+cd wps/wps-office_10.1.0.5707~a21_x86_64/f
+vim .config/fish/config.fish
+source ~/.config/fish/config.fish 
+kdede
+exti
+xkill 
+command -s ls
+cdh
+echo $WPS 
+echi $WPS 
+set -xg
+cp .bashrc .config/fish/config.fish 
+\
+
+rm prueba 
+touch prueba
+ls /data
+fish_config 
+sudo mount -t vfat /dev/sda2 /data -O rw,iud=1000,gid=1000
+man mount
+sudo mount -t vfat /dev/sda2 /data 
+sudo mount -t vfat /dev/sda2 /data -o iud=1000,gid=1000
+sudo mount -t vfat /dev/sda2 /data -o rw,iud=1000,gid=1000
+sudo fdisk -l
+sudo mount -t fat /dev/sda2 /data -o rw,iud=1000,gid=1000
+id -g
+id -u
+sudo mount -t vfat /dev/sda2 /data -o rw
+sudo mount -t vfat /dev/sda2 /data -o rw,iud=(id -u)
+sudo mount -t fat /dev/sda2 /data -o rw,iud=(id -u),gid=(id -g)
+sudo mount -t vfat /dev/sda2 /data -o rw,iud=(id -u),gid=(id -g)
+help set
+df -T
+mount
+sudo mount -t vfat /dev/sda2 /data -o rw,iud='(id -u)',gid='(id -g)'
+id -G 
+id -uG 
+id -ugG 
+id
+cat .bashrc 
+startx ~/.xinitrc startkde
+sudo pacman -Syuu
+sudo pacman -Rs pantheon-files
+startx startkde
+vim .xinitrc 
+vim InterfazRunnable2.java 
+cat InterfazRunnable2.java 
+vimdiff 
+pwd
+java InterfazRunnable2
+javac InterfazRunnable2.java 
+cd ej1-introduccion/
+cd /data/Facultad_Ingenieria/Proteco/Cursos_Prebe36/Java/hilos/
+cd /data/Facultad_Ingenieria/Proteco/Cursos_
+sudo pacman -S plasma kdebase
+neofetch 
+startx 
+aang
+ang
+exit 
+cd ..
+git push origin master
+git commit -m "Se agrego la seccion de publicaciones"
+git add *
+cd desarrollo-multiplataforma/
+mkdir desarrollo-multiplataforma
+cd Boletines/
+mkdir Boletines
+cd Android/
+cd Moviles/
+git clone https://github.com/Angel5215/Moviles.git
+cd Sección_Moviles2018-2/
+cd /data/Facultad_Ingenieria/Proteco/
+git commit -m "cambiando directorios"
+git add .
+git commit -m "Agregando un hola desde git"
+git config --global user.email "holmesrodrigo@comunidad.unam.mx"
+git config --global user.name "RodrigoFrancisco"
+vim Hola.c
+cd Calculadora/
+git clone https://github.com/RodrigoFrancisco/Calculadora.git
+cd gitHub/
+mkdir prueba gitHub
+cd /data/Tmp
+zip hilos.zip Hilos\ en\ Java.pdf
+zip hilos.zip 'Hilos\ en\ Java.pdf'
+zip hilos.zip ej4-sincronizables/ ej5-notify/ ej6-notifyAll/ "Hilos\ en\ Java.pdf" 
+wps .passwd.odt 
+cd /data/Documentos/
+vim HorseRacing.java
+javac HorseRacing.java 
+java HorseRacing
+cd ej3-racing/
+cd /data/Tmp/public/
+cd ej6-racing/
+mkdir ej3-racing
+vim Join.java
+javac Join.java 
+cd ej3-join/
+cd ej2
+mkdir ej2
+vim Hilo.java
+cd ej1/
+mkdir ej1
+ps2pdf HoroseRacing.ps 
+cat HorseRacing.java 
+rm *.class
+ps2pdf Ej6-notifyAll.ps 
+vim Ej6-notifyAll.java 
+cat Calcular.java Leer.java > Ej6-notifyAll.java
+cd ej6-notifyAll/
+ps2pdf Ej5-notify.ps 
+vim Ej5-notify.java 
+cat HiloA.java HiloB.java > Ej5-notify.java
+cat HiloA.java HiloB.java 
+cd ej5-notify/
+ps2pdf Cuenta.ps 
+vim Cuenta.java
+vim Calcular.java
+okular output.pdf 
+enscript Cuenta.java  -o - | ps2pdf - output.pdf
+cd ej4-sincronizables/
+sudo pacman -S enscript
+enscript
+cd -
+ps2pdf Ej2-sleep.ps 
+vim Ej2-sleep.java 
+cat EjSleep.java MainSleep.java > Ej2-sleep.java
+cd ej2-sleep/
+okular Ej1-introduccion.pdf 
+ps2pdf Ej1-introduccion.ps 
+vim Ej1-introduccion.java 
+cat Hilos.java InterfazRunnable.java MiRunnable.java > Ej1-introduccion.java
+rm Hilos.ps Hilos.pdf 
+okular Hilos.pdf 
+ps2pdf Hilos.ps 
+cat Hilos.ps 
+vim Hilos.java 
+ps2pdf
+ps2pd
+vim Leer.java
+mkdir ej6-notifyAll
+vim HiloB.java 
+vim HiloA.java
+mkdir ej5-notify
+clea
+ clear
+mkdir ej4-sincronizables
+mv ej6 ej6-racing
+vim Hilos.java
+cd jvmThreads/
+mkdir jvmThreads
+jstack -l
+jstack 
+jps -v
+jps 
+javac MainThread.java 
+vim Cliente.java
+ej5-cajera/
+cd ej4-filosos/
+java Join
+cat Join.java 
+cd hilos/
+java MainSleep
+javac MainSleep.java 
+cat MainSleep.java 
+cat EjSleep.java 
+cd ej6
+mv ej6-status-bar/ ej6
+cd ej6-status-bar/
+pkill -1 6968
+pkill -15 6968
+vim README.md
+vim MainThread.java
+vim CajeraThread.java
+cd ej5-cajera/
+ls .config/fish/
+cat .config/fish/fishd.thinkpadT420 
+echo $EDITOR
+man javap
+man javah 
+javah 
+smbclient //rho/public -U prebes36
+sudo smbpasswd -a prebes36
+sudo vim /etc/samba/smb.conf
+sudo vi
+sudo smbpasswd -x prebes36
+sudo usermod -a -G samba prebes36
+smbpasswd -a prebes36
+man smbpasswd 
+smbpasswd 
+smbclient -L //rho/public
+sudo systemctl restart smbd nmbd
+smbpasswd -x prebes36
+smbpasswd -e prebes36
+smb
+sudo sy
+mkdir /data/Tmp/public
+sudo chgrp -R rho ./public/
+sudo chown -R rho ./public/
+sudo chown -R prebes36 ./public/
+chown -R prebes36 ./public/
+setfacl -b public/
+man setfacl 
+setfacl -d public/
+setfacl -m u:prebes36:rwx public/
+setfacl -m u:@samba:rwx public/
+sudo chgrp -R samba public/
+chmod 775 -R public/
+sudo chgrp samba public/
+chown -R rho ./public/
+ls -l 
+sudo userdel prebe36
+sudo visudo 
+sudo passwd prebes36 
+passwd prebes36 
+sudo useradd -m prebes36
+useradd -m prebes36
+useradd -D -m prebes36
+useradd -Dm prebes36
+sudo userdel prebes36
+sudo pacman -S aduser
+sudo pacman -S adduser
+ls -l public/
+chgrp samba public/
+sudo useradd -G samba prebe36
+useradd -G samba prebe36
+chmod 755 -R public/
+sudo su samba
+sudo su prebes36
+clear 
+cl
+sudo pacman -S fish
+ls -l /
+smbclient //rho/data -U samba
+smbclient //rho/public -U data
+smbclient //rho/public -U prebes36%prebes36
+smbclient -L //rho/public 
+smbclient //rho/public -L
+sudo visudo
+visudo
+smbclient //rho/public -U " "%" "
+chown -R ./public/
+chwon -R ./public/
+smbpasswd prebes36
+sudo useradd prebes36
+useradd prebes36
+adduser prebes36
+smbclient -L rho
+smbclient //data/public -U " "%" "
+touch public/hola
+cat public/hola
+chmod 777 public/
+smbclient //host/share -U " "%" "
+smbclient data/public -N
+smbclient -N data/public
+smbclient data p
+smbclient -U data 
+smbclient data d
+smbclient -L data
+smbclient -L host
+smbclient localhost
+smbclient //data
+smbclient data
+smbclient -L data/public
+man smbclient
+smbclient 
+smbclient \\data\rho
+rm ./ej1/*.class
+rm ej1/{*.class}
+rm ej/{*.class}
+rm ej/*.class
+vim InterfazRunnable.java 
+vim MiRunnable.java
+vim ~/.vimrc 
+cd /data/Facultad_Ingenieria/Proteco/Cursos_Prebe36/Java/hilos/ej1/
+for
+vim MainSleep.java
+mv EjSleep EjSleep.java
+mv Dormir.java EjSleep
+vim Dormir.java
+ vim Hilos1.java 
+ vim Hilos1.
+vim InterfazRunnable.java
+vim Hilos1.java
+source ~/.bashrc
+source .bashrc
+pw
+rm Test.java 
+vim Test.java
+rm Prueba.java 
+vim Prueba.java
+poerof
+powqwwwweroff
+powqwwwweroffff
+ifnames 
+upower -i /org/freedesktop/UPower/devices/battery_BATO
+source .bashrc 
+sudo pacman -S neofetch
+neofetch
+figlet aang
+matede
+sudo ifconfig enp0s25 up
+sudo ifconfig enp0s25 down
+man source
+rm .pito 
+nano .pito
+cat .nvimrc 
+man history
+cat .bash_profile 
+cat .bash_logout 
+cat .bash_history 
+less .vimrc 
+cat .vimrc 
+links
+reboot 
+ifconfig enp0s25 down
+wpa_supplicant ProtecoIBM Proteco_i9bhmk
+whatis ls
+whatis read
+man apropos
+apropos read
+apropoos read
+daa
+:q
+PS1='\[$GREEN\]\u@\h \[$BLUE\]\w/\[$GREEN\] \$\[$WHITE\] '
+echo $GREEN
+echo $BLUE
+tput setf 1
+tput setf1
+tput 
+sdasd
+mv JavaHilos.pdf /data/Facultad_Ingenieria/Proteco/Cursos_Prebe36/Java/
+wget http://vis.usal.es/rodrigo/documentos/aso/JavaHilos.pdf
+rebot
+cp .vimrc /data/Tmp/
+vim Prueba.java 
+vim .vimrc 
+cat .vim/bundle/vim-snipmate/README.md 
+ls .vim/bundle/vim-snipmate/
+ls .vim/bundle/
+ls .vim/swap/
+ls .vim/
+hwclock -D
+hwclock 
+man hwclock
+hwclock --show
+hwclock --refresh
+timedatectl restart
+man timedatectl 
+timedatectl --refresh
+timedatectl 
+time
+sudo yaourt eclim
+sudo yaourt -s eclim
+free -h
+pkill -15 1280
+pkil -15 1280
+pantheon-files &
+vim index.html 
+cd /data/Ludomatics/ProyectoWeb/ludomatics/
+w
+vim Prueba4.java
+cd java/
+ls java/
+virtualbox 
+sudo swapon /dev/sda1 
+swapon /dev/sda1 
+sudo pacman -S kio-extras
+sudo pacman -S android-file-transfer
+sudo pacman -S mtpfs
+sudo pacman -S gvfs-gphoto2
+mtp-detect 
+sudo pacman -S gvfs-mtp
+gvfs-mtp
+sudo pacman -S libmtp
+vim ~/.bashrc 
+vim style.css 
+cd /data/Ludomatics/ProyectoWeb/ludomatics/css
+sudo pacman -S pantheon-files
+mv Endocrinology\ _\ Growth\ Hormone-_LKdNhF2WhI.mp4 /data/Tmp/
+mv Endocrinology\ _\ Growth\ Hormone-_LKdNhF2WhI.mp4 tmpOnline/
+mkdir tmpOnline
+rm -r Untitled\ Folder/
+sudo mount -o remount,rw /dev/sda2
+rm Untitled\ Folder/
+cd Tmp/
+touch algo
+rm algo 
+touch /data/Tmp/archivo
+cat ~/.bashrc 
+touch k
+sudo fsck -Af -M /dev/sda2
+sudo fsck -Af 
+sudo fsck -Af -M /dev/sdb2
+fsck -Af -M /dev/sdb2
+man fsck
+youtube-dl -f 137 "https://www.youtube.com/watch?v=_LKdNhF2WhI&feature=youtu.be"
+youtube-dl -F "https://www.youtube.com/watch?v=_LKdNhF2WhI&feature=youtu.be"
+youtube-dl -F "https://youtu.be/_LKdNhF2Whl"
+man youtube-dl 
+ls /data/Tmp/estadistica/
+youtube-dl "https://www.youtube.com/watch?v=5bZXpfxwHqk&t=600s"
+youtube-dl "https://www.youtube.com/watch?v=1myBo87lYyU"
+power off shut down now
+youtube-dl "https://www.youtube.com/watch?v=Eju_9eM4PZg"
+youtube-dl "https://www.youtube.com/watch?v=CuKr7GzohbI&t=115s"

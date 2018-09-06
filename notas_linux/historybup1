@@ -1,0 +1,44 @@
+    1  sudo apt get update
+    2  sudo apt update
+    3  sudo apt install chromium
+    4  sudo apt install chromium-browser
+    5  sudo apt-get install --reinstall libunity9
+    6  ps -A | grep unity
+    7  sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE
+    8  sudo add-apt-repository 'deb https://typora.io/linux ./'
+    9  sudo apt update
+   10  sudo apt-get install typora
+   11  reboot
+   12  update-grub
+   13  sudo update-grub
+   14  sudo apt-get install unity-tweak-tool
+   15  sudo add-apt-repository ppa:noobslab/macbuntu
+   16  sudo apt-get update
+   17  sudo apt-get install macbuntu-os-plank-theme-lts-v7
+   18  sudo apt-get install plank
+   19  sudo add-apt-repository ppa:noobslab/macbuntu
+   20  sudo apt-get update
+   21  sudo apt-get install macbuntu-os-icons-lts-v7
+   22  sudo apt-get install macbuntu-os-ithemes-lts-v7
+   23  wget -O launcher_bfb.png http://drive.noobslab.com/data/Mac/launcher-logo/apple/launcher_bfb.png
+   24  sudo mv launcher_bfb.png /usr/share/unity/icons/
+   25  ls
+   26  reboot
+   27  lsblk
+   28  mkdir tmp
+   29  sudo mount /dev/sdb1 tmp
+   30  sudo apt install fish
+   31  sudo apt install virtualbox
+   32  reboot
+   33  lsblk
+   34  fdisk -h
+   35  fdisk
+   36  sudo fdisk
+   37  sudo fdisk -l
+   38  sudo apt install gparted
+   39  gparted
+   40  sudo gparted
+   41  poweroff
+   42  ls
+   43  mkdir tmp
+   44  history > tmp/historybup1

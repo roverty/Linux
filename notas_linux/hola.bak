@@ -1,0 +1,6 @@
+program Heloo;
+
+begin
+        writeln('Hola');
+
+end.
