@@ -1,0 +1,99 @@
+#!/bin/bash
+#	@file FIREWALL.sh
+#	@Author Francisco Pablo, Rodrigo (14) && Cecilia (n) F.I.
+#  	Ing. Computación
+#  	PROTECO GENERACION 35
+#	@date 26/08/17
+#	@brief Script para controlar el montaje de dispositivos USB
+
+
+#El Punto del firewall es que la USB NO debe estar montada. 
+#Al montarse automaticamente el usuario queda vulnerado, por ello deseactivamos el AUTOMONTADO
+
+gsettings set org.gnome.desktop.media-handling automount false
+#Este comando evita el automontado de la USB
+#gsettings set org.cinnamon.desktop.media-handling automount false
+#Por si estamos en MINT
+gsettings set org.gnome.desktop.media-handling automount-open true
+#Auto-apertura de la USB LINUX UBUNTU
+gsettings set org.cinnamon.desktop.media-handling automount-open true
+#Por si estamos en MINT
+
+if [ ! -d /home/$USER/usb ]; then	
+#Verfica si la carpeta donde vamos a montar NO exista
+	mkdir /home/$USER/usb  
+fi
+if [ ! -f Blacklist.txt ]; then	
+#Verifica que exista el archivo donde ingresamos los dispositivos bloqueados
+	touch Blacklist.txt
+fi
+if [ ! -f Whitelist.txt ]; then 
+#Verifica que exista el archivo donde ingresamos los dispositivos permitidos
+        touch Whitelist.txt
+fi
+                
+while [ 1 ]; do #Simulando presistencia con un while infinito
+  cup=$(lsblk | grep "sd*[b-z]1")
+  #Busca si hay alguna USB conectada y la guarda en la variabe cup
+  er=""
+  if [ "$cup" != "$er" ]; then    
+  #Compara la cadena que tiene informacion de las USB con una cadena vacia
+  	USBSERIAL=$(dmesg | tail -n20 | grep ": Serial" | awk '{print $6}' )
+  	USBLABEL='USB-DEVICE'
+  	if [ $(grep -c $USBSERIAL Whitelist.txt) == 1 ]; then
+		sudo mount /dev/sdb1 /home/$USER/usb 
+		zenity --info \
+                --text="Permiso confirmado"
+		break
+	elif [ $(grep -c $USBSERIAL Blacklist.txt) == 0 ]; then
+	    zenity --warning \
+	    --text="ALERTA! SE HA CONECTADO el dispotivo  $USBLABEL al equipo '$USER."
+	    opcion=$( zenity --width=320 --height=220 --title=Firewall --entry --text="Introduce una opcion: 
+     	    1) Montarla
+     	    2) Enviar a la lista negra 
+     	    3) Salir ")
+	    case $opcion in
+
+                        1 )     echo $USBSERIAL >> Whitelist.txt
+                                sudo mount /dev/sdb1 /home/$USER/usb 
+                                        zenity --info \
+                                        --text="El dispositivo se monto correctamente"
+                                        break;;
+                        2)      echo $USBSERIAL >> Blacklist.txt 
+                                #if [$?==0 ]; then 
+                                        zenity --info \
+                                        --text="La USB ha sido agregada a la lista negra"
+                                break
+                                ;;
+                        3)      zenity --info \
+                                --text="La USB no sera monatada"
+                                break
+                                exit;;
+             esac
+     else
+                zenity --warning \
+                --text="La USB $USBNAME esta voletinada como PELIGROSA."
+                opcion=$( zenity --width=320 --height=220 --title=Firewall --entry --text="¿Desea desbloquearla? 
+            Si 
+            No ")
+                case $opcion in
+                        Si )
+                                sed -i '/[$USBSERIAL]/d' Blacklist.txt
+				echo $USBSERIAL >> Whitelist.txt
+                                zenity --info \
+                                        --text="USB DESBLOQUEADA" break
+                                exit;;
+
+                        No )    zenity --info \
+                                --text="La USB seguira voletinada como PELIGROSA"
+                                break
+                                exit;;  
+                esac
+        fi
+  else
+        zenity --info \
+        --text="No hay USB; Inserte un dispositivo"
+ fi
+ sleep 2
+done
+
