@@ -1,7 +1,0 @@
-sudo samba-tool domain provision --server-role=dc --use-rfc2307 --dns-backend=SAMBA_INTERNAL --realm=SAMDOM.RHOPTC.COM --domain=SAMDOM --adminpass=9632145Smb
-systemctl start named
-vim /etc/hosts
-vim /etc/resolv.conf
-cp /var/lib/samba/private/krb5.conf /etc/krb5.conf
-samba
-
