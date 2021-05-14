@@ -51,10 +51,10 @@ fdisk -l
   convert <img1.png,[img2.png,img3.png,...]> output.pdf
   ```
 
-  ### Edición de videos
+### Edición de videos
 
-  * **Cortar un video**: `losslesscut` (gui)
-  * **Edición de vidos**: `kdenlive` (gui)
+* **Cortar un video**: `losslesscut` (gui)
+* **Edición de vidos**: `kdenlive` (gui)
 
 
 
