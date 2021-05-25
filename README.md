@@ -54,7 +54,12 @@ fdisk -l
 ### Edición de videos
 
 * **Cortar un video**: `losslesscut` (gui)
-* **Edición de vidos**: `kdenlive` (gui)
+* **Edición de videos**: `kdenlive` (gui)
+* **Unir videos**: `mkvtoolnix-cli` (console)
+
+  ```shell
+  mkvmerge -o output.mp4 2021-05-22_09-13-12.mp4 \+ 2021-05-22_09-17-04.mp4
+  ```
 
 
 
