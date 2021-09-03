@@ -42,14 +42,14 @@ fdisk -l
 
 ** Manipulación de PDFs
 
- - *Unir PDFs*: ~pdfunite~ (console)
- - *Cortar PDFs*: ~briss~ (gui)
- - *Cortar PDFs página a página*: ~pdfarranger~ (gui)
- - Convertir imágenes a PDF (console)
+- *Unir PDFs*: ~pdfunite~ (console)
+- *Cortar PDFs*: ~briss~ (gui)
+- *Cortar PDFs página a página*: ~pdfarranger~ (gui)
+- Convertir imágenes a PDF (console)
 
-#+begin_src sh
-convert <img1.png,[img2.png,img3.png,...]> output.pdf
-#+end_src
+  #+begin_src
+  convert <img1.png,[img2.png,img3.png,...]> output.pdf
+  #+end_src
 
 ** Edición de videos
 
