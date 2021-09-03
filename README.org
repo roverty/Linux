@@ -1,0 +1,63 @@
+#+title: Linux
+#+author: Rodrigo Francisco
+#+date: <2021-09-02 Thu>
+
+* Cheatsheet
+** ls
+
+#+begin_src sh
+ls -R dir 	# Listar recursivamente los directorios de dir
+ls -Sl 		# Ordena por tamaño de archivo y agrupa las carpetas en un solo 'espacio'
+ls -d */	# Lista solo los directorios 
+#+end_src
+
+** Número de archivos en un directorio
+
+  #+begin_src sh
+  ls -1 | wc -l
+  #+end_src
+
+** du
+
+#+begin_src sh
+du -h --max-depth=1 | sort -hr
+du -h dir1 dir2 # Se puede saber el espacio de más de un dir a la vez
+du -csh dir1 dir2 # flag -c obtiene la suma del tamaño de los dirs
+du --max-depth=1 -h
+#+end_src
+
+** Crear archivos en cada directorio
+
+#+begin_src sh
+for i in $( ls -d */ ); do touch $i/README.md; done
+#+end_src
+
+** Ver espacio en disco
+
+#+begin_src sh
+fdisk -l
+#+end_src
+
+* Programas útiles
+
+** Manipulación de PDFs
+
+ - *Unir PDFs*: ~pdfunite~ (console)
+ - *Cortar PDFs*: ~briss~ (gui)
+ - *Cortar PDFs página a página*: ~pdfarranger~ (gui)
+
+ Convertir imágenes a PDF (console)
+
+  #+begin_src sh
+  convert <img1.png,[img2.png,img3.png,...]> output.pdf
+  #+end_src
+
+** Edición de videos
+
+*Cortar un video*: ~losslesscut~ (gui)
+*Edición de videos*: ~kdenlive~ (gui)
+*Unir videos*: ~mkvtoolnix-cli~ (console)
+
+  #+begin_src
+  mkvmerge -o output.mp4 2021-05-22_09-13-12.mp4 \+ 2021-05-22_09-17-04.mp4
+  #+end_src
