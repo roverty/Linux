@@ -52,9 +52,9 @@ convert <img1.png,[img2.png,img3.png,...]> output.pdf
 
 ** Edición de videos
 
-*Cortar un video*: ~losslesscut~ (gui)
-*Edición de videos*: ~kdenlive~ (gui)
-*Unir videos*: ~mkvtoolnix-cli~ (console)
+- *Cortar un video*: ~losslesscut~ (gui)
+- *Edición de videos*: ~kdenlive~ (gui)
+- *Unir videos*: ~mkvtoolnix-cli~ (console)
 
   #+begin_src
   mkvmerge -o output.mp4 2021-05-22_09-13-12.mp4 \+ 2021-05-22_09-17-04.mp4
