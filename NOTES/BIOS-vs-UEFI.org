@@ -1,0 +1,26 @@
+#+TITLE: BIOS Vs UEFI
+#+author: Rodrigo Francisco
+#+date: <2021-09-09 Thu>
+
+* Diferencias entre BIOS y UEFI
+
+| Bios                                           | UEFI                                                                        |
+|------------------------------------------------+-----------------------------------------------------------------------------|
+| Basic Input Output System                      | Unified Extensible Firmware Interface                                       |
+|------------------------------------------------+-----------------------------------------------------------------------------|
+| Puede cargarse de dispositivos de 2TB o menos  | Puede cargarse de dispositivos de 2.2 TB o más grandes,                     |
+|                                                | alcanzando un límite teórico de 9.4 zettabytes,                             |
+|                                                | alcanzando un límite teórico de 9.4 zettabytes,                             |
+|                                                | que es 3 veces más la información que se encuentra actualmente en Internet  |
+|------------------------------------------------+-----------------------------------------------------------------------------|
+| No puede inicializar múltiples dispositivos de | UEFI puede correr en modo de 32 o 64 bits, por lo que tiene más espacios    |
+| hardware a la vez, por lo tanto es lento.      | direccionables, lo que significa que el proceso de iniciado es más rápido.  |
+|------------------------------------------------+-----------------------------------------------------------------------------|
+| Interfaz de configuración sencilla             | Como UEFI puede correr en 32 o 64 bits, se puede proveer una mejor interfaz |
+|                                                | de usuario y que incluso permite el uso del *cursosr*                       |
+|------------------------------------------------+-----------------------------------------------------------------------------|
+| No cuenta con mecanismos tanto sofisticados    | UEFI provee _Secure BOOT_, lo que permite que solo driver y servicos        |
+| de seguriddad                                  | autentificados se carguen en el proceso de arranque.                        |
+|------------------------------------------------+-----------------------------------------------------------------------------|
+| Requiere de un *Boot loader*                   | No requiere de un bootloader                                                |
+|------------------------------------------------+-----------------------------------------------------------------------------|

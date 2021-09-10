@@ -1,0 +1,58 @@
+#+title: Linux
+#+author: Rodrigo Francisco
+#+date: <2021-09-03 Fri>
+
+* Introducción a Linux
+** Particiones
+*** MBR
+
+*** GTP
+*** Swap
+También conocida como memoria de intercambio. Es una memoria virtual creada en disco, que sirve como soporte a la memoria RAM
+
+- TODO: Tarea BIOS vs UEFI ( pros y contras )
+
+** Kdump
+
+** Directorios
+
+- /: El directorio principal
+- bin: Binarios del usuario
+- sbin: Binarios del sistema
+- boot: Imágenes de arranque
+- home
+- etc: Archivos de configuración, tanto del sistema como de servicios y aplicaciones
+- proc: Información de los procesos
+- opt: Programas no nativos
+- sys: Archivos virtuales para extraer información en tiempo real
+- dev: Información de los dispositivos y vólumenes
+- tmp: Archivos temporales
+- usr: Archivos de los programas creados por los usuarios
+- var: Variables, logs
+- lib: Librerías del sistema
+
+** Configuraciones básicas
+#+begin_src sh
+hostnamectl set-hostname tsic2.ezmeral.hpe.com
+
+# Configurando la red
+nmcli
+nmcli device show
+nmcli connection show
+nmcli connection --help
+nmcli connection modify --help
+nmcli connection modify ens192 ipv4.method manual ipv4.addr "172.16.51.199/25 172.16.51.129"
+nmcli connection show
+nmcli connection show --active
+nmcli connection up ens192
+nmcli connection show --active
+ip addr
+
+nmcli connection modify ens192 ipv4.gw4 172.16.51.129
+nmcli connection down ens192
+nmcli connection up ens192
+
+# Configurando el DNS
+vi /etc/resolv.conf
+nameserver 8.8.8.8
+#+end_src
