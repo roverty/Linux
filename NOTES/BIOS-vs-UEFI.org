@@ -31,11 +31,15 @@ Requiere de un *Boot loader*                     | No requiere de un bootloader 
 Busca el MBR en el primer sector del dispositivo | No busca en el primer sector del dipositivo, mantiene una lista de vólumnes |
 de arranque seleccionado                         | de arranque válidos, en el llamado EFI Service Partition.                   |
 
-| Bios                                          | UEFI                                                                                                                                                                                                                                |
-|-----------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <10>                                          | <10>                                                                                                                                                                                                                                |
-| Basic Input Output System                     | Unified Extensible Firmware Interface                                                                                                                                                                                               |
-| Puede cargarse de dispositivos de 2TB o menos | Puede cargarse de dispositivos de 2.2 TB o más grandes,  alcanzando un límite teórico de 9.4 zettabytes, alcanzando un límite teórico de 9.4 zettabytes, que es 3 veces más la información que se encuentra actualmente en Internet |
+
++------------------------------+------------------------------+
+| Hola estoy creando una tabla |Haciendo una segunda prueba de|
+|con mucho contenido en emacs  |como de grande se puede hacer |
+|                              |la tabla                      |
++------------------------------+------------------------------+
+|Última prueba del tamañan de  |Debemos ber como se exporta a |
+|una tabla.                    |github                        |
++------------------------------+------------------------------+
 
 
 ** Referencias
