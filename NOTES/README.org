@@ -2,19 +2,16 @@
 #+author: Rodrigo Francisco
 #+date: <2021-09-03 Fri>
 
-* Introducción a Linux
-** Particiones
-*** MBR
+** Introducción a Linux
+*** Particiones
 
-*** GTP
-*** Swap
-También conocida como memoria de intercambio. Es una memoria virtual creada en disco, que sirve como soporte a la memoria RAM
+- MBR
+- GTP
+- Swap: También conocida como memoria de intercambio. Es una memoria virtual creada en disco, que sirve como soporte a la memoria RAM
 
-- TODO: Tarea BIOS vs UEFI ( pros y contras )
+*** Kdump
 
-** Kdump
-
-** Directorios
+*** Directorios
 
 - /: El directorio principal
 - bin: Binarios del usuario
@@ -31,7 +28,8 @@ También conocida como memoria de intercambio. Es una memoria virtual creada en 
 - var: Variables, logs
 - lib: Librerías del sistema
 
-** Configuraciones básicas
+*** Configuraciones básicas
+
 #+begin_src sh
 hostnamectl set-hostname tsic2.ezmeral.hpe.com
 
@@ -41,7 +39,7 @@ nmcli device show
 nmcli connection show
 nmcli connection --help
 nmcli connection modify --help
-nmcli connection modify ens192 ipv4.method manual ipv4.addr "172.16.51.199/25 172.16.51.129"
+nmcli connection modify ens192 ipv4.method manual ipv4.addr "172.16.51.199"
 nmcli connection show
 nmcli connection show --active
 nmcli connection up ens192
