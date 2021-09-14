@@ -1,0 +1,31 @@
+#+TITLE: Tipos de Shells
+
+/Describir para que sirven los shells y dónde se utilizan/
+
+Una *shell*, es un interpréte de línea de comandos de Linux. Provee una interfaz para la ejecución de programas llamados /comandos/ entre el usuario y el kernel de los sistemas Unix. Por ejemplo, si un usuario ingresa =ls=, la /shell/ ejecuta dicho comando y regresa una salida en la terminal del usuario.
+
+** Tipos de shells
+*** Bourne Shell (sh)
+Bourne Shell, es el primer shell de los sistemas operativos Unix, fue desarrollado en los laboratorios Bell de AT&T. Ganó popularidad por ser de naturaleza compacta y realizar operaciones de manera rápida. Es el shell por defecto en el sistema operativo Solaris. Dentro de sus desventajas se encuentra:
+- No tiene implementadas operaciones logicas ni aritméticas por defecto.
+- No se puede llamar a comandos ejecutados previamente
+- Carece de características "comprensivas" que permitan una buena interacción con el usuario
+
+*** GNU Bourne-Again Shell (bash)
+Es la shell más popular dentro de los sistemas operativos Unix, además que fue desarrollada para ser compatible con Bourne shell. Incorpora funciones de otras shell como /Korn shell/ y /C shell/. Permite llamar nuevamente a comandos ingresados previamente, además de poder editarlos.
+
+*** C Shell (csh)
+Fue creada en la universidad de California, por Bill Joy. Fue desarrollada para incluir la funcionalidad por defecto de poder realizar operaciones lógicas y aritméticas. Fue la primera en incluir el comando =history= y los /aliases/.
+
+*** Korn Shell (ksh)
+Creada por David Korn en los laboratorios AT&T, para mejorar la Bourne shell. Además de soportar todas las funcionalidades de la Bourne Shell, se le agregan nuevas capacidades, por ejemplo, la de hacer operaciones lógicas y aritméticas. Korn Shell corre scripts diseñados para Bourne Shell, y además ofrece manipulación de cadenas, arreglos y funciones en una manera muy similar a la del lenguaje C. Además se considera más rápida que las otras shell, incluida la /C shell/
+
+*** Z Shell (zsh)
+Es una extensión de la shell sh, con toneladas de mejoras para su personalización. Es una shell moderna que presenta las siguientes características:
+- Generación de nombre de archos basados en las condiciones dadas.
+- Suporte para plugins y temas
+- Índice de funciones por defecto
+- Autocompletado de comandos
+
+** Referencias
+- Ninad Pathak.
