@@ -1,7 +1,7 @@
 #+TITLE: BIOS Vs UEFI
 #+author: Rodrigo Francisco
 #+date: <2021-09-09 Thu>
-#+STARTUP: shrink
+#+STARTUP: noalign
 
 * Diferencias entre BIOS y UEFI
 
@@ -30,16 +30,6 @@ Requiere de un *Boot loader*                     | No requiere de un bootloader 
 -------------------------------------------------+-----------------------------------------------------------------------------|
 Busca el MBR en el primer sector del dispositivo | No busca en el primer sector del dipositivo, mantiene una lista de vólumnes |
 de arranque seleccionado                         | de arranque válidos, en el llamado EFI Service Partition.                   |
-
-
-+------------------------------+------------------------------+
-| Hola estoy creando una tabla |Haciendo una segunda prueba de|
-|con mucho contenido en emacs  |como de grande se puede hacer |
-|                              |la tabla                      |
-+------------------------------+------------------------------+
-|Última prueba del tamañan de  |Debemos ber como se exporta a |
-|una tabla.                    |github                        |
-+------------------------------+------------------------------+
 
 
 ** Referencias
