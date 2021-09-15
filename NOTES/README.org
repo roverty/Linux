@@ -2,6 +2,7 @@
 #+date: <2021-09-03 Fri>
 
 * Semana 01
+
 ** Introducción a Linux
 *** Particiones
 
@@ -54,3 +55,25 @@ nmcli connection up ens192
 vi /etc/resolv.conf
 nameserver 8.8.8.8
 #+end_src
+
+* Semana 02
+
+** LVM
+#+BEGIN_SRC shell
+lsblk
+parted
+partprobe
+lsblk
+pvcreate /dev/sda4
+vgcreate VG_TS /dev/sda4
+pvs
+vgs
+vgcreate -L 1G -n lv_cap01 VG_TS
+lvcreate -L 1G -n lv_cap01 VG_TS
+mkfs.ext3 /dev/VG_TS/lv_cap01
+lvs
+mkdir /cap01
+mount /dev/VG_TS/lv_cap01 /cap01
+df -h
+lsblk
+#+END_SRC
