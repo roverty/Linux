@@ -1,5 +1,5 @@
-#+TITLE: Tipos de Shells
 
+* Tipos de shells
 /Describir para que sirven los shells y dónde se utilizan/
 
 Una *shell*, es un interpréte de línea de comandos de Linux. Provee una interfaz para la ejecución de programas llamados /comandos/ entre el usuario y el kernel de los sistemas Unix. Por ejemplo, si un usuario ingresa =ls=, la /shell/ ejecuta dicho comando y regresa una salida en la terminal del usuario.
@@ -28,4 +28,7 @@ Es una extensión de la shell sh, con toneladas de mejoras para su personalizaci
 - Autocompletado de comandos
 
 ** Referencias
-- Ninad Pathak.
+- Ninad Pathak. /What are the Different Types of Shells in Linux?/
+  Consultado el 14 de septiembre de 2021 en https://www.journaldev.com/39194/different-types-of-shells-in-linux
+
+* Evidencia LVM
