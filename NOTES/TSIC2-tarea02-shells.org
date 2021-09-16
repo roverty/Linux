@@ -1,3 +1,7 @@
+#+TITLE: Tarea 02
+#+AUTHOR: Rodrigo Francisco
+#+OPTIONS: num:nil toc:nil
+
 
 * Tipos de shells
 /Describir para que sirven los shells y dónde se utilizan/
@@ -32,3 +36,25 @@ Es una extensión de la shell sh, con toneladas de mejoras para su personalizaci
   Consultado el 14 de septiembre de 2021 en https://www.journaldev.com/39194/different-types-of-shells-in-linux
 
 * Evidencia LVM
+
+El Administrador de volumen lógico (LVM) es un marco de asignación de dispositivos que proporciona administración de volumen lógico para el kernel de Linux.
+
+*** Creación de una partición para LVM
+
+Para crear una partición a partir del espacio que se dejó previamente se utiliza la herramienta conocida como =parted=
+
+#+begin_src sh
+parted
+#+end_src
+
+Dentro de de =parted=, podemos usar comandos como
+- =print=, para ver las particiones del disco actual.
+- =mkpart=, para crear una nueva partición.
+
+En este caso utilizamos =mkpart= para crear la partición, y simplemente se fue utilizando el menú interactivo que este proporciona.
+
+Para esta primera parte olvide tomar captura de pantalla, pero las particiones creadas se debe ver de la siguiente manera:
+
+#+CAPTION: Particiones después de ser creadas por parted
+#+NAME:   fig:parted
+[[./t02/00.png]]
