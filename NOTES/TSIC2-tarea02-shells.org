@@ -55,6 +55,110 @@ En este caso utilizamos =mkpart= para crear la partición, y simplemente se fue 
 
 Para esta primera parte olvide tomar captura de pantalla, pero las particiones creadas se debe ver de la siguiente manera:
 
-#+CAPTION: Particiones después de ser creadas por parted
-#+NAME:   fig:parted
 [[./t02/00.png]]
+
+Posteriormente nos aseguramos que el sistema operativo se enteré de las nuevas particiones utiizando el siguiente comando.
+
+#+begin_src shell
+partprobe
+#+end_src
+
+Ahora, para corroborar que la partición se reconoció podemos ejectuar =lsblk=
+
+[[./t02/01-lsblk.png]]
+
+*** Creación de volumen físico y volumen lógico
+
+A partir de =lsblk=, anterior se debe ubicar la partición en donde se creará el volumen físico, para nuestro caso //devsda4/
+
+#+begin_src shell
+pvcreate /dev/sda4
+#+end_src
+
+=pvcreate= crea un volumen físico en la partición que le indiquemos.
+
+Posteriormente, se crea un grupo de volumenes, que permitirá dividir nuestro volumen físico en tantas particiones como necesitemos.
+
+#+begin_src shell
+vgcreate VG_TS /dev/sda4
+#+end_src
+
+=vgcreate= recibe un identificador, seguido de la partición donde se encuentra el volumen físico.
+
+[[./t02/01.png]]
+
+Se pueden listar los volumenes físicos con el comando =pvs= y los grupos de volúmenes, con el comando =vgs=
+
+*** Creación de volúmenes lógicos
+
+Para crear un volumen lógico se utiliza la siguiente instrucción:
+
+#+begin_src shell
+lvcreate -L 1G -n lv_cap01 VG_TS
+#+end_src
+
+=lvcreate=, puede recibir varias banderas, en este caso
+- =-L= nos permite especificar el tamaño de la partición
+- =-n= nos permite darle una "etiqueta" al volumen creado
+
+Cabe resaltar que el único parámetro obligatorio a especificar es el grupo donde se creará nuestro volumen
+
+El volumen no servirá de nada hasta que le demos un sistema de archivos, es decir, debemos formatearlo:
+
+#+begin_src shell
+mkfs.ext3 /dev/VG_TS/lv_cap01
+#+end_src
+
+Con =mkfs= podemos especificar varios sistemas de arvhivos, como por ejemplo, /ext4, fat, vfat/, etc.
+
+Para ver que el volumen se ha creado podemos listarlo usando el siguiente comando:
+
+#+begin_src shell
+lvs
+#+end_src
+
+Obtendremos una salida similar a la siguiente:
+
+[[./t02/02-lvs.png]]
+
+*** Montar la partición
+
+El último paso para poder utilizar nuestra partición es *montarla*, para lo cual creamos un directorio a nivel de raíz, como se observa a continuación:
+
+#+begin_src shell
+mkdir /cap01
+mount /de/VG_TS/lv_cap01 /cap01
+#+end_src
+
+El comando =mount=, permite montar particiones o dispositivos de almacenamiento externos, su sintaxis siempre es:
+
+#+begin_src shell
+mount <FUENTE> <DESTINO>
+#+end_src
+
+Donde el /destino/ se refiere a en que directorio de nuestro sistema de archivos se quere montar.
+
+Finalmente, para revisar que todo este correcto podemos ejecutar cualquiera de los dos comandos:
+
+#+begin_src shell
+df -h
+lsblk
+#+end_src
+
+[[./t02/03.png]]
+
+*** Se repiten los mismos pasos para cap02, cap03 y cap04
+
+Para cap02, cap03 y cap04 se repiten los mismos pasos como se puede ver en las siguientes capturas de pantalla:
+
+[[./t02/04.png]]
+
+[[./t02/05.png]]
+
+Con la práctica se observo que era más fácil crear antes todos los directorios de los puntos de montaje. Después crear todas las particiones lógicas. Posteriormente formatear todas las particiones creadas y por último montarlas. En lugar de hacer cada uno de esos pasos por cada volumen.
+
+*** Resultado final
+
+Al terminal el proceso podemos observar las 4 particiones solicitads debidamente montadas en sus respectivos directorios.
+
+[[./t02/06.png]]
