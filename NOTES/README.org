@@ -10,7 +10,7 @@
 - GTP
 - Swap: También conocida como memoria de intercambio. Es una memoria virtual creada en disco, que sirve como soporte a la memoria RAM
 
-*** Kdump
+*** COMMENT Kdump
 
 *** Directorios
 
@@ -82,3 +82,93 @@ mount /dev/VG_TS/lv_cap01 /cap01
 df -h
 lsblk
 #+END_SRC
+
+* Semana 04
+
+** Instalaciones de paquetes sin Internet (Usando el disco de instalación)
+
+#+begin_src shell
+mount /dev/cdroom /mnt
+vi /etc/yum.repos.d/repos.repo
+#+end_src
+
+Escribir lo siguiente:
+
+#+begin_src shell
+[AppStream]
+name=AppStream
+baseurl=file:///mnt/AppStream
+enable=1
+gpgcheck=0
+
+[Baseos]
+name=BaseOS
+baseurl=file:///mnt/BaseOS
+enable=1
+gpgcheck=0
+#+end_src
+
+#+RESULTS:
+
+#+begin_src shell
+yum repolist # Ahora deberíamos ver 4 repositorios
+#+end_src
+
+Al final no vamos a instalar nada con el disco por lo que al final eliminaremos el archivo.
+
+** Usando =dnf=
+
+#+begin_src shell
+dnf search yum
+dnf install yum-utils
+dnf search dns
+dnf search ntp
+
+yumdownloader ntpstat
+rpm -ivh ntpstat-0.5-2.el8.noarch.rpm
+# No nos dejara por las dependencias
+yumdownloader chrony
+rpm -ivh chrony-3.5-2.el8.x86_64.rpm
+# Ahora sí ya podremos instalar ntpstat
+#+end_src
+
+** Firewall-cmd
+
+Es la evolución de /IP tables/
+
+#+begin_src shell
+systemctl status firewalld
+
+firewall-cmd --help
+firewall-cmd --get-default-zone
+
+firewall-cmd --list-all
+firewall-cmd --list-all-zones
+
+firewall-cmd --permanent --set-target=DROP
+firewall-cmd --add-icmp-block-inversion --permanent
+# Despues de agregar una regla
+firewall-cmd --reload
+#+end_src
+
+Las zonas sirven para categorizar las interfaces, fuentes, servicios, protocolos, etc.
+
+#+begin_src shell
+firewall-cmd --permanent --zone block --add-source=172.16.51.199
+firewall-cmd --reload
+# Primero revisa el log
+firewall-cmd --permanent --zone block --remove-source=172.16.51.199
+firewall-cmd --reload
+#+end_src
+
+Zonas:
+- DROP: Manda una alerta
+- BLOCK: No manda alerta, solo no lo deja pasar
+
+Vemos los logs del sistema
+
+#+begin_src shell
+tail -f /var/log/messages
+tail -f /var/log/secure
+tail -f /var/log/firewalld
+#+end_src
