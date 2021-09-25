@@ -67,3 +67,6 @@ fdisk -l
   #+begin_src
   mkvmerge -o output.mp4 2021-05-22_09-13-12.mp4 \+ 2021-05-22_09-17-04.mp4
   #+end_src
+
+** Referencias
+- [[https://www.cs.dartmouth.edu/~campbell/cs50/shell.html][CS50]]
