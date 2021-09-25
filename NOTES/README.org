@@ -85,6 +85,8 @@ lsblk
 
 * Semana 04
 
+[[https://access.redhat.com/sites/default/files/attachments/rh_sm_command_cheatsheet_1214_jcs_print.pdf][Manual para =subscription manager= ]]
+
 ** Instalaciones de paquetes sin Internet (Usando el disco de instalación)
 
 #+begin_src shell
@@ -116,7 +118,7 @@ yum repolist # Ahora deberíamos ver 4 repositorios
 
 Al final no vamos a instalar nada con el disco por lo que al final eliminaremos el archivo.
 
-** Usando =dnf=
+** Usando paquetes =rpm=
 
 #+begin_src shell
 dnf search yum
