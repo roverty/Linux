@@ -2,6 +2,13 @@
 #+author: Rodrigo Francisco
 #+date: <2021-09-02 Thu>
 
+GNU/Linux es por mucho es sistema operativo más utilizado para montar servicios, gestionar usuarios, monitorear la red, etc.
+Conocer sus características es vital para cualquier persona en la rama de la computación.
+
+Linux, no es el sistema operativo, sino que más bien hace referencia al /Kernel/, creado por Linus Torvalds en 1991.
+
+[[./README.assets/linux.png]]
+
 ** Cheatsheet
 *** ls
 
