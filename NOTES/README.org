@@ -1,16 +1,54 @@
 #+author: Rodrigo Francisco
 #+date: <2021-09-03 Fri>
 
+* Temario
+
+1. LINUX redhat-centos ()
+   + Instalación de sistema operativo linux
+   + Crear usuarios/grupos
+   + Crear particiones y montaje de volumenes (lvm)
+   + Configurar permisos (usuario/grupo) y permisos en directorios y archivos
+   + Instalación de paquetes y repositorios, crear cuenta en redhat
+   + Configuración de redes (linea de comandos)
+   + Hardening de servidores (politicas de contraseñas, administración de sesiones)
+   + Administración de firewalld
+   + Selinux
+2.Virtualización
+    + ¿Qué es la virtualización?
+    + Diferencia entre máquinas virtuales y servidores físicos
+    + Hypervisor
+    + Switches virtuales (standard y distribuidos)
+    + Almacenamiento compartido (fiber channel, iscsi, nfs)
+    + Configuración de cluster de virtualización
+    + DRS  ( distributed resource schedule)
+    + DPM ( distributed power management)
+    + HA (high availability)
+    + Contenedores en vmware
+3. Contenedores
+    + Instalación de contenedores (dockers) en linux
+    + Creación de contenedores
+    + Configuración de red virtual para contenedores
+    + Configuración de volumenes logicos
+    + Kubernetes (practica con vmware y crear un cluster con kubernetes)
+4. Kubernetes
+    + Componentes de contenedores
+    + Creación de cluster de contenedores
+    + Administración básica de contenedores.
+    + Creación de microservicios
+
 * Semana 01
 
 ** Introducción a Linux
 *** Particiones
 
-- MBR
-- GTP
+- MBR: /Master Boot Reload/. Tabla que contiene los apuntadores de la particiones de nuestro disco. Podemos tener los siguientes tipos de particiones
+  + 4 primarias
+  + En realidad: 3 primarias y 1 extendida.
+  + La partición /extendida/ puede crecer de la partición 5 a la 15.
+  + En Linux se recomienda usar particiones primarias.
+    [[./README.assets/mbr.png]]
+- GPT: Tabla de particiones _al inicio y al final_ del disco. No hay limite de particiones y podemos usar discos mayores a 2 TB.
 - Swap: También conocida como memoria de intercambio. Es una memoria virtual creada en disco, que sirve como soporte a la memoria RAM
-
-*** COMMENT Kdump
 
 *** Directorios
 
@@ -29,7 +67,7 @@
 - var: Variables, logs
 - lib: Librerías del sistema
 
-*** Configuraciones básicas
+*** Configuración de la red
 
 #+begin_src sh
 hostnamectl set-hostname tsic2.ezmeral.hpe.com
@@ -48,6 +86,7 @@ nmcli connection show --active
 ip addr
 
 nmcli connection modify ens192 ipv4.gw4 172.16.51.129
+
 nmcli connection down ens192
 nmcli connection up ens192
 
@@ -58,7 +97,138 @@ nameserver 8.8.8.8
 
 * Semana 02
 
-** LVM
+** Permisos y manejo de usuarios en Linux
+
+#+begin_src shell
+ls -l
+#+end_src
+
+#+RESULTS:
+| total      | 364 |          |          |        |     |    |       |                                |
+| drwxr-xr-x |   2 | rhodstar | rhodstar |   4096 | Sep | 29 | 19:03 | README.assets                  |
+| -rwxr--r-- |   1 | rhodstar | rhodstar |   5533 | Sep | 29 | 19:05 | README.org                     |
+| drwxr-xr-x |   2 | rhodstar | rhodstar |   4096 | Sep | 15 | 19:43 | t02                            |
+| -rw-r--r-- |   1 | rhodstar | rhodstar |   3203 | Sep | 14 | 13:29 | TSIC2-tarea01-BIOS-vs-UEFI.org |
+| -rw-r--r-- |   1 | rhodstar | rhodstar |  93755 | Sep |  9 | 22:52 | TSIC2-tarea01-BIOS-vs-UEFI.pdf |
+| -rw-r--r-- |   1 | rhodstar | rhodstar |   6693 | Sep | 15 | 19:53 | TSIC2-tarea02-shells.org       |
+| -rw-r--r-- |   1 | rhodstar | rhodstar | 235915 | Sep | 15 | 20:00 | TSIC2-tarea02-shells.pdf       |
+| -rw-r--r-- |   1 | rhodstar | rhodstar |   8748 | Sep | 15 | 20:00 | TSIC2-tarea02-shells.tex       |
+
+- r = 2^2 = 4
+- w = 2^1 = 2
+- x = 2^0 = 1
+
+Entonces
+- rwx = 7
+- rw = 5
+- r = 4
+
+#+begin_src shell
+useradd rodrigo # Crea el usuario con su directorio
+
+cd /home/rodrigo
+ls -ld /home/rodrigo
+touch test01
+ls -l /home/rodrigo/test01 # Permisos de lectura por defecto para grupo y otros
+mkdir Test01
+ls -ld Test01 # Permisos de ejecucion para grupo y otros
+#+end_src
+
+Para los /archivos/ los permisos por defecto son  /644/ y para /directorio/ son  /777/
+
+- Archivo
+  + Permisos por default: 666
+  + *umask*: 644
+- Directorio
+  + Permiso por defecto: 777
+  + *umask*: 755
+
+#+begin_src shell
+umask # Deber regresar 022
+
+umask 111
+touch test02
+ls -l test02 # Mascara: 666
+
+umask 0077
+touch test03
+ls -l test03 # Mascara 600
+mkdir Test03
+ls -ld Test03 # 700
+#+end_src
+
+Creación de usuarios
+
+#+begin_src shell
+sudo su rodrigo
+id
+
+cat /etc/passwd
+useradd -u 1010 -c "usuario prueba" fulanito
+cat /etc/passwd
+
+cat /etc/group
+#+end_src
+
+Usuarios y grupos
+
+#+begin_src shell
+groupadd --help
+groupadd -g 1100 seguridad
+cat /etc/group
+useradd -u 1101 -g 1100 policia01
+useradd -u 1102 -g seguridad policia02
+
+usermod -g 1100 fulanito # Fulanito ahora es parte del gpo seguridad
+usermod -G 1100 rodrigo # rodrigo, se encuentra como parte del segurida en /etc/group
+
+groupadd -g 1200 administrator
+usermod -G 1200,1100 rodrigo
+#+end_src
+
+#+begin_src shell
+passwd policia03
+su - policia03
+touch Test01
+ls -l # 644
+chmod 646 Test01 # Cambiando permisos
+ls -l #646
+
+chmod 700 Test01
+ls -l Test01
+chmod g+rw Test01
+#+end_src
+
+#+begin_src shell
+groupadd -g 2000 finanzas
+useradd -g 2000 -u 2001 contador01
+useradd -g 2000 -u 2002 contador02
+useradd -g 2000 -u 2003 contador03
+
+mkdir /finanzas /seguridad
+ls -ld /finanzas /seguridad
+chgrp seguridad /seguridad
+umask 0022
+chmod 770 /seguridad
+
+su - contador01
+cd /seguridad # No nos debería dejar
+
+su - policia01
+touch 01
+cat 01
+exit
+su -l policia02
+cat 01
+vi 01 # Brecha de seguridad
+#+end_src
+
+** LVM (Logical Volume Manager)
+
+Con LVM podemos hacer particiones apartir de varios discos
+
+[[./README.assets/lvm.jpeg]]
+
 #+BEGIN_SRC shell
 lsblk
 
@@ -85,7 +255,42 @@ lsblk
 
 * Semana 04
 
+** Suscripciones para RHEL
+
+Suscripciones
+- 1 suscripción de SO
+  + Paquetes de SO, paquetes extras
+- 1 suscripción de virtualización
+  + Paquetes de virtualización
+  + Paquetes de SO, extra
+- 1 sucripción para contenedores
+  + Contenedores virtuales, SO, extra, etc.
+
+Gestores de paquetes
+- yum
+- dnf
+- rpm
+
 [[https://access.redhat.com/sites/default/files/attachments/rh_sm_command_cheatsheet_1214_jcs_print.pdf][Manual para =subscription manager= ]]
+
+#+begin_src shell
+yum list
+yum repolist # Hasta este momento no tenemos nada
+
+subscription-manager register # Nos pedira las credenciales
+subscription-manager list --available
+subscription-manager attach --pool=#Completar-con-id
+subscription-manager repos --list
+subscription-manager repos --enable=rhel-8-for-x86_64-baseos-rpms
+subscription-manager repos --list | grep Stream
+subscription-manager repos --list | grep -B1 Stream
+subscription-manager repos --enable=rhel-8-for-x86_64-appstream-rpms
+
+dnf repolist
+
+dnf install zsh
+dnf install wget
+#+end_src
 
 ** Instalaciones de paquetes sin Internet (Usando el disco de instalación)
 
