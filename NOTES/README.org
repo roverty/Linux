@@ -14,27 +14,27 @@
    + Administración de firewalld
    + Selinux
 2.Virtualización
-    + ¿Qué es la virtualización?
-    + Diferencia entre máquinas virtuales y servidores físicos
-    + Hypervisor
-    + Switches virtuales (standard y distribuidos)
-    + Almacenamiento compartido (fiber channel, iscsi, nfs)
-    + Configuración de cluster de virtualización
-    + DRS  ( distributed resource schedule)
-    + DPM ( distributed power management)
-    + HA (high availability)
-    + Contenedores en vmware
+   + ¿Qué es la virtualización?
+   + Diferencia entre máquinas virtuales y servidores físicos
+   + Hypervisor
+   + Switches virtuales (standard y distribuidos)
+   + Almacenamiento compartido (fiber channel, iscsi, nfs)
+   + Configuración de cluster de virtualización
+   + DRS  ( distributed resource schedule)
+   + DPM ( distributed power management)
+   + HA (high availability)
+   + Contenedores en vmware
 3. Contenedores
-    + Instalación de contenedores (dockers) en linux
-    + Creación de contenedores
-    + Configuración de red virtual para contenedores
-    + Configuración de volumenes logicos
-    + Kubernetes (practica con vmware y crear un cluster con kubernetes)
+   + Instalación de contenedores (dockers) en linux
+   + Creación de contenedores
+   + Configuración de red virtual para contenedores
+   + Configuración de volumenes logicos
+   + Kubernetes (practica con vmware y crear un cluster con kubernetes)
 4. Kubernetes
-    + Componentes de contenedores
-    + Creación de cluster de contenedores
-    + Administración básica de contenedores.
-    + Creación de microservicios
+   + Componentes de contenedores
+   + Creación de cluster de contenedores
+   + Administración básica de contenedores.
+   + Creación de microservicios
 
 * Semana 01
 
