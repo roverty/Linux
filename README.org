@@ -45,6 +45,11 @@ for i in $( ls -d */ ); do touch $i/README.md; done
 fdisk -l
 #+end_src
 
+*** Comparar 2 archivos línea a línea
+#+begin_src shell
+diff <(nl file1) <(nl file2)
+#+end_src
+
 ** Programas útiles
 
 *** Manipulación de PDFs
