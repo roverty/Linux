@@ -13,7 +13,7 @@
    + Hardening de servidores (politicas de contraseñas, administración de sesiones)
    + Administración de firewalld
    + Selinux
-2.Virtualización
+2. Virtualización
    + ¿Qué es la virtualización?
    + Diferencia entre máquinas virtuales y servidores físicos
    + Hypervisor
@@ -24,8 +24,8 @@
    + DPM ( distributed power management)
    + HA (high availability)
    + Contenedores en vmware
-3. Contenedores
-   + Instalación de contenedores (dockers) en linux
+   + Contenedores
+3. Instalación de contenedores (dockers) en linux
    + Creación de contenedores
    + Configuración de red virtual para contenedores
    + Configuración de volumenes logicos
