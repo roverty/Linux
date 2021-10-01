@@ -452,7 +452,6 @@ cat /etc/pam.d/system-auth
 | Bloqueo de la sesión       |  300s |
 | Intentos fallidos          |     5 |
 | Número de sesiones activas |     5 |
-|                            |       |
 
 #+begin_src shell
 vi /etc/login.defs
