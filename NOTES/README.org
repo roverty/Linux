@@ -379,3 +379,111 @@ tail -f /var/log/messages
 tail -f /var/log/secure
 tail -f /var/log/firewalld
 #+end_src
+
+* Semana 05
+
+Examen: 14 de Octubre de 2014
+
+** Hardering de servidores ( Políticas de contraseñas, administración de sesiones )
+
+Los servidores deben de cumplir con ciertas políticas de contraseñas para tener mayor seguridad. Existen 2 ISOS:
+
+- ISO27000
+- ISO27001
+- ISO27017: AWS, Google Cloud, On premise.
+
+Políticas de contraseñas
+
+| Política                                                 |   Valor |
+|----------------------------------------------------------+---------|
+| Mayúsculas                                               |       1 |
+| Números                                                  |       1 |
+| Caracteres especiales                                    |       1 |
+| Longitud                                                 |      12 |
+| Minúsculas                                               |       1 |
+| Cadenas conocidas (123, abc, 321, qwerty)                |       3 |
+| Diccionario conocido (usuario, nombre, correo, apellido) |         |
+| No repetir historial                                     |       5 |
+| Caducidad                                                | 90 días |
+| No repetir cadenas                                       |       3 |
+
+[[./README.assets/time-crack.png]]
+
+[[./README.assets/pass.png]]
+
+#+begin_src shell
+cat /etc/security/pwquality.conf
+#+end_src
+
+#+begin_src shell
+difok = 3
+minlen = 12
+dcredit = 1
+ucredit = 1
+lcredit = 1
+ocredit = 1
+minclass = 1
+maxrepeat = 3
+maxclassrepeat = 0
+gecoscheck = 0
+dictcheck = 1
+usercheck = 1
+usersubstr = 0
+enforcing = 1
+dictpath = /root/dicc
+retry = 3
+#+end_src
+
+Contraseñas:
+- policia01: hola123
+
+/pam_pwquality/
+
+#+begin_src shell
+cat /etc/pam.d/system-auth
+#+end_src
+
+** Manejo de sesiones
+
+| Política                   | Valor |
+|----------------------------+-------|
+| Inactividad                |  600s |
+| Intentos de conexión       |     3 |
+| Bloqueo de la sesión       |  300s |
+| Intentos fallidos          |     5 |
+| Número de sesiones activas |     5 |
+|                            |       |
+
+#+begin_src shell
+vi /etc/login.defs
+#+end_src
+
+#+begin_src shell
+PASS_MAX_DAYS 90
+PASS_MIN_DAS 0
+PASS_MIN_LEN 12
+PASS_WARN_AGE 7
+#+end_src
+
+#+begin_src shell
+vi /etc/ssh/sshd_config
+#+end_src
+
+#+begin_src shell
+LoginGraceTime 30
+PermitRootLogin yes
+MaxAuthTries 3
+MaxSessions 2
+
+Banner /root/banner
+#+end_src
+
+#+begin_src shell
+vi /root/banner
+#+end_src
+
+#+begin_src shell
+Esto sistema es privado y utilizado para fines de la empresa.
+Cualquier conexión al servidor permite ser monitoreada las actividades
+El sistema solo tiene permitido acceder a usuarios que pertenecen a la empresa
+#+end_src
