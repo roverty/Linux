@@ -50,6 +50,11 @@ fdisk -l
 diff <(nl file1) <(nl file2)
 #+end_src
 
+*** Quitar primera columna y dejar el resto
+#+begin_src shell
+history | head | awk '{$1=""}1'
+#+end_src
+
 ** Programas útiles
 
 *** Manipulación de PDFs
