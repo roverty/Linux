@@ -382,7 +382,7 @@ tail -f /var/log/firewalld
 
 * Semana 05
 
-Examen: 14 de Octubre de 2014
+Examen: 15 de Octubre de 2014
 
 ** Hardering de servidores ( Políticas de contraseñas, administración de sesiones )
 
@@ -486,3 +486,115 @@ Esto sistema es privado y utilizado para fines de la empresa.
 Cualquier conexión al servidor permite ser monitoreada las actividades
 El sistema solo tiene permitido acceder a usuarios que pertenecen a la empresa
 #+end_src
+
+* Semana 06
+** SELinux
+
+Es una capa extra de seguridad
+
+#+begin_src shell
+ls -lZ /boot
+ls -lZ /
+#+end_src
+
+Si un archivo no tiene contexto, el servicio no levanta o se queda pasmado
+
+#+begin_src shell
+cat /etc/sysconfig/selinux
+
+getenforce
+
+setenforce permissive
+#+end_src
+
+- *Enforcing*: Si algún servicio o directorio no tiene el contexto adecuado, no arranca el servicio.
+- *Permissive*: Se pueden tener el servicio levantando pero con muchos warnings de que se debe hacer la configuración correcta.
+
+#+begin_src shell
+dnf whatprovides semanage
+dnf install policycoreutils-python-utils
+dnf whatprovides seinfo
+dnf install setools-console
+dnf whatprovides sealert
+dnf install setroubleshoot-server
+#+end_src
+
+Hay 3 tipos de contextos:
+
+Contextos del sistema
+#+begin_src shell
+seinfo -u
+#+end_src
+
+Roles del sistema
+#+begin_src shell
+seinfo -r
+#+end_src
+
+#+begin_src shell
+seinfo -t
+seinfo | grep http
+#+end_src
+
+*** Ejemplo
+
+#+begin_src shell
+dnf install httpd
+
+vi /etc/httpd/conf/httpd.conf
+# Cambiar a puerto 82
+
+systemctl restart httpd
+journal -xe
+semanage port -a -t http_port_t -p tcp 82
+systemctl restart httpd
+#+end_src
+
+#+begin_src shell
+semanage port -l
+#+end_src
+
+#+begin_src shell
+sealert -l*
+#+end_src
+
+** Virtualización
+
+La virtualización nos permite correr máquinas virtuales. Utilizando equipos con 1 o 2 TB de RAM, y procesadores platinum con 64 cores.
+
+Los equipos (se les conoce como /hipervisores/) tienen que tener un almacenamiento externo para las máquinas virtuales.
+
+[[./README.assets/virtual.png]]
+
+Hipervisor de VMWare: ESXI
+
+[[./README.assets/virtual02.png]]
+
+Las máquinas virtuales están aisladas.
+Las máquinas virtuales estan encapsuladas, cada máquina virtual tiene sus propios archivos de configuración
+
+/vMotion/, es la capacidad de mover la máquinas virtuales de un servidor a otro.
+
+[[./README.assets/vmotion.png]]
+
+Comparación entre equipos físicos y virtuales
+
+[[./README.assets/time.png]]
+
+Discos virtuales:
+
+- Thick: Disco de 20GB que nadie más va a poder utilizar
+- Thin: Disco de 40GB, que se pueden utilizar bajo demanda.
+
+[[./README.assets/discos.png]]
+
+*Notas de examen:*
+- Es totalmente práctico, debemos sacar screenshots.
+- Generar máquina virtual con redhat 8 (0.5 la sola entrega de la MV)
+  + SDA 40GB (0.5)
+  + / 10 GB
+  + /boot 1GB
+  + /efi 600M
+  + /home 5GB
+  + /var 5GB
+- Configuración de red para tener salida a internet (0.25)
