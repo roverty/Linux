@@ -1,0 +1,79 @@
+#+TITLE: SELinux
+#+AUTHOR: Rodrigo Francisco Pablo
+#+DATE:  <2021-10-07 Thu>
+#+LATEX_HEADER: \usepackage[total={17cm,23cm}, top=2cm, left=2cm]{geometry}
+#+LATEX_HEADER: \renewcommand{\familydefault}{\sfdefault}
+#+LATEX_HEADER: \renewcommand\thepage{}
+#+LATEX_HEADER: \parindent=0mm
+#+OPTIONS: num:nil toc:nil
+
+** ¿Para qué sirve?
+*Security-Enhaced* (SELinux), es una arquitectura de seguridad para sistemas Linux que permite al administrador tener más control sobre quién puede acceder al sistema.
+
+SELinux define controles de acceso para aplicaciones, procesos y archivos sobre el sistema. Utiliza políticas, que son un conjunto de reglas que dictan a que se puede acceder y a que no.
+
+SELinux tiene 3 modos básicos:
+
+- *Enforcing* (modo por defecto): Forza la aplicación de las políticas de SELinux en el sistema. Deniega acceso y se producen "logs"
+- *Permissive*: SELinux se encuentra habilitado pero no se forzan las políticas de seguirdad, solo se mandan alertas y se producen "logs"
+- *Disabled*: SELinux se encuentra apagado.
+
+** Ejemplos
+
+- Concer el modo en el que se encuentra SELinux.
+  #+begin_src shell
+  sestatus
+  #+end_src
+- Archivo de configuración:
+  #+begin_src shell
+  /etc/sysconfig/selinux
+  #+end_src
+- Cambiar a modo /permisivo/
+  #+begin_src shell
+  setenforce 0
+  #+end_src
+- Listar el contexto SELinux en un directorio
+  #+begin_src shell
+  ls -lZ
+  #+end_src
+
+SELinux es controlado mediante politicas. Básicamente existen dos modos:
+- MLS
+- Targeted (Por defecto en RHEL)
+
+Para visualizar el modo:
+#+begin_src shell
+semanage user -l
+#+end_src
+
+Para el siguiente ejemplo, se supone que tenemos =httpd=
+
+Cuando utilizamos SELinux, no es lo mismo =cp= que =mv=, esto se puede demostrar utilizando los siguientes comandos:
+
+#+ATTR_LATEX: :width 0.7\textwidth
+[[./t03.assets/example01.png]]
+
+El resultado será que podemos acceder a =test01.html=, porque utilizamos =cp= y su contexto cambio, pero no podemos acceder a =test02.html=.
+
+#+ATTR_LATEX: :width 0.7\textwidth
+[[./t03.assets/res01.png]]
+
+Para solucionar el problema anterior, se puede emplear la herramienta =chcon=
+
+#+ATTR_LATEX: :width 0.7\textwidth
+[[./t03.assets/example02.png]]
+
+
+** Comandos más usados
+
+- =sestatus=
+- =semanage=
+- =sealert=
+- =seinfo=
+- =chcon=
+
+** Referencias
+
+- RedHat (agosto, 2019). /What is SELinux?/. Consultado el 07 de octubre de 2021 en https://www.redhat.com/en/topics/linux/what-is-selinux
+- CentOS(marzo, 2020). /SELinux/. Consultado el 07 de octubre de 2021 en https://wiki.centos.org/HowTos/SELinux
+- Computer Networking Note (junio,2021). /SELinux Explained with Examples in Easy Language/. Consultado el 07 de octubre de 2021 en https://www.computernetworkingnotes.com/linux-tutorials/selinux-explained-with-examples-in-easy-language.html
