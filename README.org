@@ -86,7 +86,8 @@ Linux, no es el sistema operativo, sino que más bien hace referencia al /Kernel
   #+end_src
 - Imprimir entradas únicas, filtrando excepciones
   #+begin_src shell
-  history |awk '{$1=""}1' | sort | uniq -u | grep -Ev '^*(cd|ct|git|ls|lt|man|mkdir|v|cp|mv|rm|zip|zathura)'
+  history |awk '{$1=""}1' | sort | uniq -u |
+      grep -Ev '^*(cd|ct|git|ls|lt|man|mkdir|v|cp|mv|rm|zip|zathura)'
   #+end_src
 
 #+begin_comment
