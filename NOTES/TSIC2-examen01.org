@@ -9,18 +9,18 @@
 #+LATEX_HEADER: \parindent=0mm
 
 1. Generar máquina virtual con redhat 8 (0.5 la sola entrega de la MV)
-   a. SDA 40GB (0.5)
-      a. / 10GB
-      b. /boot 1GB
-      c. /boot/efi 600MB
-      d. /home 5GB
-      e. /var 5GB
+   - SDA 40GB (0.5)
+     + / 10GB
+     + /boot 1GB
+     + /boot/efi 600MB
+     + /home 5GB
+     + /var 5GB
 
-      #+ATTR_LATEX: :width 0.9\textwidth :center nil
-      [[./examen01.assets/01-partitions.png]]
+     #+ATTR_LATEX: :width 0.9\textwidth :center nil
+     [[./examen01.assets/01-partitions.png]]
 
-      #+ATTR_LATEX: :width 0.9\textwidth :center nil
-      [[./examen01.assets/01-lsblk.png]]
+     #+ATTR_LATEX: :width 0.9\textwidth :center nil
+     [[./examen01.assets/01-lsblk.png]]
 2. Configuración de red para tener salida a internet (0.25)
 
     #+ATTR_LATEX: :width 0.9\textwidth :center nil
