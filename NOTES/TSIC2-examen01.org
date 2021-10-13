@@ -1,0 +1,27 @@
+#+TITLE: Primer parcial Temas selectos de ingeniería en computación II
+#+AUTHOR: Rodrigo Francisco Pablo
+#+DATE: 15 de octubre de 2021
+#+BIND: org-latex-images-centered nil
+#+OPTIONS: num:nil toc:nil
+#+LATEX_HEADER: \usepackage[total={175mm,230mm}, top=20mm, left=15mm]{geometry}
+#+LATEX_HEADER: \renewcommand{\familydefault}{\sfdefault}
+#+LATEX_HEADER: \renewcommand\thepage{}
+#+LATEX_HEADER: \parindent=0mm
+
+1. Generar máquina virtual con redhat 8 (0.5 la sola entrega de la MV)
+   a. SDA 40GB (0.5)
+      a. / 10GB
+      b. /boot 1GB
+      c. /boot/efi 600MB
+      d. /home 5GB
+      e. /var 5GB
+
+      #+ATTR_LATEX: :width 0.9\textwidth :center nil
+      [[./examen01.assets/01-partitions.png]]
+
+      #+ATTR_LATEX: :width 0.9\textwidth :center nil
+      [[./examen01.assets/01-lsblk.png]]
+2. Configuración de red para tener salida a internet (0.25)
+
+    #+ATTR_LATEX: :width 0.9\textwidth :center nil
+    [[./examen01.assets/02-network.png]]
