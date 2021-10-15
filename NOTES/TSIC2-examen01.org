@@ -8,7 +8,9 @@
 #+LATEX_HEADER: \renewcommand\thepage{}
 #+LATEX_HEADER: \parindent=0mm
 
-1. Generar máquina virtual con redhat 8 (0.5 la sola entrega de la MV)
+**NOTA: PARA MOSTRAR LA FECHA UTILICE EL COMANDO DATE**
+
+1. Generar máquina virtual con redhat 8 (1 punto)
    - SDA 40GB (0.5)
      + / 10GB
      + /boot 1GB
@@ -21,7 +23,88 @@
 
      #+ATTR_LATEX: :width 0.9\textwidth :center nil
      [[./examen01.assets/01-lsblk.png]]
-2. Configuración de red para tener salida a internet (0.25)
+2. Crear particiones y montaje de volumenes (LVM) (2 puntos)
+   - crear un pv de 2GB
+   - Crear un vg llamado EXAM_01
+   - Crear 3 LVM
+     + LV_RFP ext4 300MB
+     + LV_XFS_01 xfs 300MB
+     + LV_XFS_02 xfs 300MB
+     + Montarlo en los siguiente directorios respectivamente
+       - MIEXAMEN_01
+       - MIEXAMEN_02
+       - MIEXAMEN_03
 
-    #+ATTR_LATEX: :width 0.9\textwidth :center nil
-    [[./examen01.assets/02-network.png]]
+    #+ATTR_LATEX: :width 0.7\textwidth :center nil
+    [[./examen01.assets/02-pv.png]]
+
+    #+ATTR_LATEX: :width 0.7\textwidth :center nil
+    [[./examen01.assets/02-pvcreate.png]]
+
+    #+ATTR_LATEX: :width 0.7\textwidth :center nil
+    [[./examen01.assets/02-lv-rfp.png]]
+
+    #+ATTR_LATEX: :width 0.7\textwidth :center nil
+    [[./examen01.assets/02-lv-xfs-01-02.png]]
+
+    #+ATTR_LATEX: :width 0.7\textwidth :center nil
+    [[./examen01.assets/02-mounting.png]]
+3. Crear usuarios/Grupos
+   - Crear el usuario student_01 student_02, student_03
+   - Crear el grupo examen01 y respuestas01
+   - student_01 y student_03 deberan pertenecer a grupo examen01
+   - student_02 debe pertenecer a grupo respuestas01
+   - El usuario student_01 no puede escribir en MIEXAMEN_03 y si puede escribir en MIEXAMEN_01 y MIEXAMEN_02
+   - El usuario student_02 puede escribir en los tres directorios MIEXAMEN_01, MIEXAMEN_02 y MIEXAMEN_03
+
+     #+ATTR_LATEX: :width 0.9\textwidth :center nil
+     [[./examen01.assets/03-users.png]]
+4. Configuración de red para tener salida a internet
+
+   #+ATTR_LATEX: :width 0.9\textwidth :center nil
+   [[./examen01.assets/02-network.png]]
+5. Instalación de paquetes y repositorios (1 punto)
+   - Instalar VSFTPD
+   - yum info vsftpd
+   - rpm -qi vsftpd
+   - Levantar servicio
+
+   #+ATTR_LATEX: :width 0.9\textwidth :center nil
+    [[./examen01.assets/05-subscribe.png]]
+
+   #+ATTR_LATEX: :width 0.9\textwidth :center nil
+    [[./examen01.assets/05-package.png]]
+
+   #+ATTR_LATEX: :width 0.9\textwidth :center nil
+    [[./examen01.assets/05-up.png]]
+
+6. Hardering de servidores (políticas de contraseñas, administración de sesiones) (2 puntos)
+   - Configurar política de contraseñas con las siguientes características
+     + Caracteres especiales 1
+     + Longitud de contraseña 15
+     + Mayúsculas 1
+     + Números 2
+     + Minúsculas 2
+
+   #+ATTR_LATEX: :width 0.9\textwidth :center nil
+    [[./examen01.assets/06-rules.png]]
+
+   #+ATTR_LATEX: :width 0.9\textwidth :center nil
+    [[./examen01.assets/06-test.png]]
+7. Administración de Firewall (IPTABLES) (1 punto)
+   - Tener servicio levantado
+   - Validad que se tenga la política por todos los servicios utilizados para el examen
+
+   #+ATTR_LATEX: :width 0.9\textwidth :center nil
+   [[./examen01.assets/07-firewall.png]]
+8. Configuración de SELINUX (1 punto)
+   - Instalar httpd
+   - Cambiar puerto TCP para que inicie con puerto 82
+   - Dejar habilitado selinux
+
+   #+ATTR_LATEX: :width 0.9\textwidth :center nil
+    [[./examen01.assets/08-selinux.png]]
+
+Crear documento con las evidencias de las actividades
+Las evidencias deben tener fecha y hora.
+Mandar antes de las 9:11 AM
