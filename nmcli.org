@@ -1,0 +1,40 @@
+#+TITLE: NMCLI
+
+Ejemplos de como usar =nmcli=
+
+#+begin_src shell
+man nmcli-examples
+#+end_src
+
+Conexión vía wifi
+
+#+begin_src shell
+nmcli wifi list
+
+nmcli device wifi connect "$SSID" password "$PASSWORD"
+#+end_src
+
+Activar una conexión
+
+#+begin_src shell
+nmcli con up eth2
+
+nmcli con show --active
+#+end_src
+
+Crear una nueva conexión a internet con IP estática
+
+#+begin_src shell
+nmcli con add con-name eth2 type ethernet ifname eth2 ipv4.method manual ipv4.address 10.10.10.4/24 ipv4.gateway 10.10.10.1
+#+end_src
+
+Conectarse en automático
+
+#+begin_src shell
+nmcli con mod eth2 connection.autoconnect yes
+#+end_src
+
+** Referencias
+
+- [[https://www.golinuxcloud.com/nmcli-command-examples-cheatsheet-centos-rhel/][Go Linux Cloud]]
+- Man page =nmcli-examples=
