@@ -1,0 +1,64 @@
+#+TITLE: Laboratorio parte 1
+#+AUTHOR: Rodrigo Francisco Pablo
+#+DATE:  <2021-10-28 Thu>
+#+LATEX_HEADER: \usepackage[total={17cm,23cm}, top=1.5cm, left=1cm]{geometry}
+#+LATEX_HEADER: \renewcommand{\familydefault}{\sfdefault}
+#+LATEX_HEADER: \renewcommand\thepage{}
+#+LATEX_HEADER: \parindent=0mm
+#+OPTIONS: num:nil toc:nil
+
+# desde la 125 a la 205,
+# pantallazos y descripción de algunas imagenes de que es lo que estan haciendo y para que sirve.
+
+- Verificación de que VSphere HA este habilitado, se observa la gráfica de CPU y Memoria.
+  #+ATTR_LATEX: :width 0.84\textwidth
+  #+ATTR_ORG: :width 50
+  [[./t04.assets/01.png]]
+  #+ATTR_LATEX: :width 0.84\textwidth
+  #+ATTR_ORG: :width 50
+  [[./t04.assets/03.png]]
+- Captura que muestra el servicio DRS (Distributed Resource sheduler) habilitado.
+  #+ATTR_LATEX: :width 0.84\textwidth
+  #+ATTR_ORG: :width 50
+  [[./t04.assets/04.png]]
+- Lista de alarmas que se pueden habilitar
+  #+ATTR_LATEX: :width 0.84\textwidth
+  #+ATTR_ORG: :width 50
+  [[./t04.assets/05.png]]
+- Creación de alarma que migra la VM si "CPU Ready" excede los 80000ms en el transcurso de 5 minutos.
+  #+ATTR_LATEX: :width 0.84\textwidth
+  #+ATTR_ORG: :width 50
+  [[./t04.assets/06.png]]
+- Aumentamos los recursos recursos compartidos de la VM con windows. Esto le permitirá tener más recursos, típicamente esto se hace conservidores de producción.
+  #+ATTR_LATEX: :width 0.84\textwidth
+  #+ATTR_ORG: :width 50
+  [[./t04.assets/07.png]]
+- Migración de máquinas virtuales utilizando _VMOTION_
+  #+ATTR_LATEX: :width 0.84\textwidth
+  #+ATTR_ORG: :width 50
+  [[./t04.assets/08.png]]
+  #+ATTR_LATEX: :width 0.84\textwidth
+  #+ATTR_ORG: :width 50
+  [[./t04.assets/09.png]]
+  #+ATTR_LATEX: :width 0.84\textwidth
+  #+ATTR_ORG: :width 50
+  [[./t04.assets/10.png]]
+  #+ATTR_LATEX: :width 0.84\textwidth
+  #+ATTR_ORG: :width 50
+- Se aprecia que ahora nuestras máquinas virtuales están en el segundo sitio (antes estaban en esx-01a.corp.local)
+  [[./t04.assets/11.png]]
+  #+ATTR_LATEX: :width 0.84\textwidth
+  #+ATTR_ORG: :width 50
+- Se muestran capturas sobre el monitoreo y rendimiento de vsphere
+  [[./t04.assets/12.png]]
+  #+ATTR_LATEX: :width 0.84\textwidth
+  #+ATTR_ORG: :width 50
+  [[./t04.assets/13.png]]
+- Se aprecia que podemos monitorear el uso del CPU de cada VM por separado
+  #+ATTR_LATEX: :width 0.84\textwidth
+  #+ATTR_ORG: :width 50
+  [[./t04.assets/14.png]]
+- Así mismo se puede monitorear la memoria en tiempo real
+  #+ATTR_LATEX: :width 0.84\textwidth
+  #+ATTR_ORG: :width 50
+  [[./t04.assets/15.png]]
