@@ -24,49 +24,49 @@ Las características que solo están disponibles en Distributed Switch son:
 *Laboratorio*
 
 - En la siguiente imagen se puede apreciar las propiedades de una región; se destacan, el número de puertos, de /uplinks/, así como el discovery protocol
-  #+ATTR_LATEX: :width 0.8\textwidth
+  #+ATTR_LATEX: :width 0.9\textwidth
   #+ATTR_ORG: :width 50
   [[./t05.assets/02.png]]
 - Utilizando la configuración vSS, la arquitectura que conecta a los host con el switch se ve de la siguiente manera.
-  #+ATTR_LATEX: :width 0.8\textwidth
+  #+ATTR_LATEX: :width 0.9\textwidth
   #+ATTR_ORG: :width 50
   [[./t05.assets/03.png]]
 - Por ejemplo, para la VM "TinyLinux", se observa el camino que sigue para llegar a los NIC Adapters
-  #+ATTR_LATEX: :width 0.8\textwidth
+  #+ATTR_LATEX: :width 0.9\textwidth
   #+ATTR_ORG: :width 50
   [[./t05.assets/04.png]]
 - Procedemos a la creación de un vDS
-  #+ATTR_LATEX: :width 0.8\textwidth
+  #+ATTR_LATEX: :width 0.9\textwidth
   #+ATTR_ORG: :width 50
   [[./t05.assets/05.png]]
 - Tenemos que agregar los _host_ que queremos que sean administrados por este nuevo switch distribuido.
-  #+ATTR_LATEX: :width 0.8\textwidth
+  #+ATTR_LATEX: :width 0.9\textwidth
   #+ATTR_ORG: :width 50
   [[./t05.assets/07.png]]
 - Seleccionamos el "uplink", por el que queremos que salga.
-  #+ATTR_LATEX: :width 0.8\textwidth
+  #+ATTR_LATEX: :width 0.9\textwidth
   #+ATTR_ORG: :width 50
   [[./t05.assets/08.png]]
-  #+ATTR_LATEX: :width 0.8\textwidth
+  #+ATTR_LATEX: :width 0.9\textwidth
   #+ATTR_ORG: :width 50
   [[./t05.assets/09.png]]
 - Una vez realizado el proceso anterior, debemos observar que los host han sido enlazados con el vDS
-  #+ATTR_LATEX: :width 0.8\textwidth
+  #+ATTR_LATEX: :width 0.9\textwidth
   #+ATTR_ORG: :width 50
   [[./t05.assets/11.png]]
 - Sin embargo, existe un problema, no hay máquinas virtuales.
-  #+ATTR_LATEX: :width 0.8\textwidth
+  #+ATTR_LATEX: :width 0.9\textwidth
   #+ATTR_ORG: :width 50
   [[./t05.assets/12.png]]
 - Lo anterior se corrige entrando a la migración de máquinas virtuales, en donde como fuente se seleccionará "VM Network"
-  #+ATTR_LATEX: :width 0.8\textwidth
+  #+ATTR_LATEX: :width 0.9\textwidth
   #+ATTR_ORG: :width 50
   [[./t05.assets/13.png]]
 - Como destino debemos seleccionar "new vDS"
-  #+ATTR_LATEX: :width 0.8\textwidth
+  #+ATTR_LATEX: :width 0.9\textwidth
   #+ATTR_ORG: :width 50
   [[./t05.assets/14.png]]
 - Finalmente, se debe observar la máquina virtual, y al hacer click sobre ella debemos de ver el "camino" para llegar a un adaptador NIC.
-  #+ATTR_LATEX: :width 0.8\textwidth
+  #+ATTR_LATEX: :width 0.9\textwidth
   #+ATTR_ORG: :width 50
   [[./t05.assets/15.png]]

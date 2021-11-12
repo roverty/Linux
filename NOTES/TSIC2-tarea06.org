@@ -1,0 +1,42 @@
+#+TITLE: Docker y Kubernetes
+#+AUTHOR: Rodrigo Francisco Pablo
+#+DATE:  <2021-11-12 Fri>
+#+LATEX_HEADER: \usepackage[total={17cm,23cm}, top=1.5cm, left=1.5cm]{geometry}
+#+LATEX_HEADER: \renewcommand{\familydefault}{\sfdefault}
+#+LATEX_HEADER: \renewcommand\thepage{}
+#+LATEX_HEADER: \parindent=0mm
+#+OPTIONS: num:nil toc:nil
+
+- Podemos checar el estado de docker con =systemctl status docker=
+  [[./t06.assets/2021-11-10_12-24.png]]
+- Como prueba podemos correr un contenedor como se muestra
+  [[./t06.assets/2021-11-10_12-28.png]]
+- De hecho podemos correr varios contenedores a la vez. Por ejemplo al ejecutar el contenedor de =ngnix= se puede especificar el puerto y la versión (_latest_) y después podemos consultar el contenido del sitio web levantado en ngnix.
+  [[./t06.assets/2021-11-10_12-36_1.png]]
+- Podemos detener los contenedores y eliminarlos con dos sencillos comandos.
+  [[./t06.assets/2021-11-10_12-37_3.png]]
+- Básicamente con docker podemos jalar (pull) contenendores preexistentes o crear nuestros propios contenedores con nuestra aplicación. Para esta demostración, se utiliza un shell script.
+  [[./t06.assets/2021-11-10_12-46.png]]
+- Se crear la imagen y esta lista para que podamos utilizarla.
+[[./t06.assets/2021-11-10_12-47.png]]
+- Con /docker compose/ podemos definir y correr múltiples contenedores de nuestras aplicaciones de docker.
+  [[./t06.assets/2021-11-10_12-49.png]]
+  [[./t06.assets/2021-11-10_12-56.png]]
+  [[./t06.assets/2021-11-10_13-11.png]]
+  [[./t06.assets/2021-11-10_13-16.png]]
+- Docker es todo un entorno de trabajo, tal es así que ofrece sus propias herramientas para la administración de procesos
+  [[./t06.assets/2021-11-10_13-19.png]]
+- Ahora bien, *kubernetes*, nos permite administrar un conjunto de contenedores con la finalidad de tener un sistema escalable, con tolerancia y con baja latencia. A continuación se muestran algunos comandos básicos del administrador =kubectl=
+  [[./t06.assets/2021-11-10_13-22.png]]
+- En kubernetes la configuración del o de los sistemas se realiza en un archivo =yaml=, en dicho archivo se observa que se puede controlar el número de replicas que queremos desplegar.
+  [[./t06.assets/2021-11-10_13-22_1.png]]
+- A continuación se muestran una serie de comandos necesitarios para preparar el despliegue de nuestro contenedores y posteriormente el despliegue de la aplicación como tal.
+  [[./t06.assets/2021-11-10_13-26.png]]
+- Kubernetes es una herramienta muy completa y para le monitoreo y la administración de nuestro sistema.
+  [[./t06.assets/2021-11-10_13-39.png]]
+- Podemos consultar los /logs/
+  [[./t06.assets/2021-11-10_13-40.png]]
+- Activar el balanceo de carga
+  [[./t06.assets/2021-11-10_13-42.png]]
+- Y por último, también podemos detener y eliminar todos los componentes lanzados.
+[[./t06.assets/2021-11-10_13-47.png]]
