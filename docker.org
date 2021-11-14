@@ -128,3 +128,126 @@ docker exec -it <id|name> /bin/bash
 
 ** Workflow con Docker
 [[./DOCKER.assets/workflow.png]]
+
+** Docker network
+Docker crear su propia red aislada. Los contenedores se pueden comunicar entre ellos.
+[[./DOCKER.assets/workflow.png]]
+
+#+begin_src shell
+# Mostrar las redes disponibles en docker
+docker network ls
+
+# Crear una nueva red para nuestra aplicación
+docker network create mongo-network
+
+#+end_src
+
+** Real case use scenario
+
+#+begin_src shell
+docker pull mongo
+docker pull mongo-express
+#+end_src
+
+No olvidar crear la red.
+
+#+begin_src shell
+# Creación del contenedor para mongodb
+docker run -p27017:27017 -d \
+-e MONGO_INITDB_ROOT_USERNAME=admin \
+-e MONGO_INITDB_ROOT_PASSWORD=password \
+--name mongodb \
+--network  mongo-network \
+mongo
+
+docker logs <id>
+
+# Creación del contenedor para mongo-express
+docker run -d \
+-p 8081:8081 \
+-e ME_CONFIG_MONGODB_ADMINUSERNAME=admin \
+-e ME_CONFIG_MONGODB_ADMINPASSWORD=password \
+--net mongo-network \
+--name mongo-express
+-e ME_CONFIG_MONGODB_SERVER=mongodb \
+mongo-express
+
+docker logs <id> -f
+#+end_src
+
+** Docker compose
+
+[[./DOCKER.assets/dcompose-01.png]]
+
+Docker compose crea una red común de forma automática.
+
+Se crea a tráves de un archivo =yaml=, se debe tener cuidado con la implementación
+
+#+begin_src shell
+# Iniciamos los contenedores del archivo de docker compose
+docker-compose -f mongo.yaml up
+
+docker network ls
+#+end_src
+
+No hay persistencia de datos en los contenedores
+
+** Dockerfile
+
+Estamos listo para desplagar nuestra aplicación.
+Ahora podemos crear nuestra propia imagen.
+
+=Dockerfile= es un /blueprint/(plano o template) que nos permitirá crear nuestra imagen con sus configuraciones.
+
+#+begin_src shell
+#Dockerfile
+FROM node
+
+ENV MONGO_DB_USERNAME=admin\
+    MONGO_INITDB_ROOT_PWD=password
+
+RUN mkdir -p /home/app #Cualquier comando de linux (se ejecuta en el contendor)
+COPY ./app /home/app #Se ejecuta en el host
+CMD ["node","/home/app/server,js"] #Entry point
+#+end_src
+
+- CMD es el punto de entrada de nuestra aplicación
+- RUN permite ejecutar varios comandos, múltiples veces.
+
+#+begin_src shell
+# Construyendo nuestra imagen
+docker build -t my-app:1.0 .
+
+docker run my-app:1.0
+
+# Borramos el contenedor
+docker stop <id>
+docker rm <id>
+# Borramos la imagen
+docker rmi <id>
+
+#Corregir Dockerfile y después ...
+docker build -t my-app:1.0 .
+docker run my-app:1.0
+
+docker exec -it <id>  /bin/sh
+#+end_src
+
+** Repositorios de docker
+
+Nombrado de imagenes
+#+begin_src shell
+registryDomain/imageName:tag
+#+end_src
+
+En DockerHub:
+- =docker pull mongo:4.2=
+- =docker pull docker.io/library/mongo:4.2=
+
+
+#+begin_src shell
+docker login
+
+docker tag my-app:latest <remote-repo:version>
+docker push <id:version>
+#+end_src
