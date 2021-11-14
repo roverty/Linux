@@ -197,7 +197,7 @@ No hay persistencia de datos en los contenedores
 Estamos listo para desplagar nuestra aplicación.
 Ahora podemos crear nuestra propia imagen.
 
-=Dockerfile= es un /blueprint/(plano o template) que nos permitirá crear nuestra imagen con sus configuraciones.
+=Dockerfile= es un /blueprint/ (plano o template) que nos permitirá crear nuestra imagen con sus configuraciones.
 
 #+begin_src shell
 #Dockerfile
@@ -232,6 +232,7 @@ docker run my-app:1.0
 
 docker exec -it <id>  /bin/sh
 #+end_src
+** Docker volumes
 
 ** Repositorios de docker
 
@@ -251,3 +252,35 @@ docker login
 docker tag my-app:latest <remote-repo:version>
 docker push <id:version>
 #+end_src
+
+** Docker volumes
+
+Docker volumes nos permiten persistir nuestros datos.
+
+Recordemos que cuando los contendores se detienen o reinician su estado se reinicia también.
+
+Un directorio del sistema de archivos del host se monda en el sistema de archivos *virtual* de Docker.
+
+[[./DOCKER.assets/docker-volume.png]]
+
+*** Host volumes
+Nosotros decidimos en donde se hace la referencia del sistema de archivos
+
+#+begin_src shell
+docker run \
+    -v /home/mount/data:/var/lib/mysql/data
+#+end_src
+*** Anonymous volumes
+Docker crea el directorio
+#+begin_src shell
+docker run  -v /var/lib/mysql/data
+#+end_src
+*** Named volumes
+Es una mejor de los volúmenes anonimos.
+#+begin_src shell
+docker run  -v name:/var/lib/mysql/data
+#+end_src
+
+*** Volumes en Docker compose
+
+[[./DOCKER.assets/compose-volumes.png]]
