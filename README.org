@@ -86,8 +86,7 @@ Linux, no es el sistema operativo, sino que más bien hace referencia al /Kernel
   #+end_src
 - Imprimir entradas únicas, filtrando excepciones
   #+begin_src shell
-  history |awk '{$1=""}1' | sort | uniq -u |
-      grep -Ev '^*(cd|ct|git|ls|lt|man|mkdir|v|cp|mv|rm|zip|zathura)'
+  history |awk '{$1=""}1' | sort | uniq -u | grep -Ev '^*(cd|ct|git|ls|lt|man|mkdir|v|cp|mv|rm|zip|zathura)'
   #+end_src
 
 #+begin_comment
@@ -115,8 +114,8 @@ Brillo y volumen, battery: xbacklight
   #+begin_src shell
   convert <img1.png,[img2.png,img3.png,...]> output.pdf
   #+end_src
-- Cortar PDFs ~briss~ (gui)
-- Cortar PDFs página a página ~pdfarranger~ (gui)
+- Cortar PDFs: ~briss~ (gui)
+- Cortar PDFs página a página: ~pdfarranger~ (gui)
 
 *** Edición de videos
 
@@ -124,12 +123,117 @@ Brillo y volumen, battery: xbacklight
   #+begin_src
   mkvmerge -o output.mp4 2021-05-22_09-13-12.mp4 \+ 2021-05-22_09-17-04.mp4
   #+end_src
-- Reparar un video ~untrunc~ (console)
+- *Reparar un video*: ~untrunc~ (console)
   #+begin_src shell
   untrunc ok-video.mp4 corrupt.mp4
   #+end_src
-- Cortar un video ~losslesscut~ (gui)
-- Edición de videos ~kdenlive~ (gui)
+- Cortar un video: ~losslesscut~ (gui)
+- Edición de videos: ~kdenlive~ (gui)
+** Utilerías de respaldo de información
+*** =rsync=
+
+#+begin_src shell
+rsync $source_dir user@ip:$dest_dir -aPvh
+#+end_src
+
+=/= al final del nombre de un directorio toma el contenido de ese directorio y se copia. Sin =/=, se copia toda la carpeta.
+
+*** =rclone=
+
+=rclone= sincroniza directorios locales con directorios remotos en servicios en la nube como google drive, mega, onedrive, etc.
+
+=gfi= es el nombre del repositorio remoto
+
+#+begin_src shell
+rclone sync --update --verbose --transfers 30 --checkers 8 --contimeout 60s \
+--timeout 300s --retries 3 --low-level-retries 10 --stats 1s --stats-file-name-length 0 \
+--exclude-if-present .gfi-ignore \
+$source_folder \
+gfi:$dest_folder
+#+end_src
+
+*** Packages
+
+#+begin_src shell
+# First of all we need to update and upgrade our system
+#pacman -Syuu --noconfirm
+
+# This is all necesary for i3
+#pacman -S i3 dmenu pulseaudio light xorg-xbacklight feh playerctl
+
+# Then, we need to install basic libraries, dependencies or very common programas
+pacman -S --noconfirm xorg-xkill
+pacman -S --noconfirm samba lsof tree fish zsh simple-scan
+
+# Our text editors
+pacman -S --noconfirm vim code atom arduino texmaker
+
+# As sometime we are doing web, it is necesary to have the basics
+pacman -S --noconfirm php php-sqlite composer npm
+
+# Some image editors
+pacman -S --noconfirm blender inkscape
+# Some accesories
+pacman -S --noconfirm vlc obs-studio thunderbird telegram-desktop filezilla
+#pacman -S virtualbox virtual-host-dkms
+
+pacman -S jdk-openjdk python-pip
+pacman -S --noconfirm texlive-most
+
+pacman -S firefox unzip evince deepin-screenshot
+
+#pacman -S wine
+
+#usermod -s /usr/bin/fish rho
+#archlinux-java set java-12-openjdk
+
+#modprobe vboxdrv
+#modprobe vboxnetadp
+#modprobe vboxnetflt
+#+end_src
+
+Paquetes AUR
+
+#+begin_src shell
+alarm-clock-applet
+phpstorm
+postman-bin
+rclone-browser
+slack-desktop
+spotify
+sublime-text-dev
+teamviewer
+typora
+xzoom
+timer
+snapd
+rapid-miner
+audio-recorder
+gravit-designer-bin
+zoom
+skypeforlinux-stable-bin
+powerline-fonts-git
+tllocalmgr-git
+perl-term-shellui
+briss
+pdfcropmargins
+python-pysimplegui
+python-pymupdf
+losslesscut
+fakeuser-git
+beecrypt
+rpm-org
+teams
+wkhtmltopdf-static
+python-ebaysdk
+python-num2words
+python-ofxparse
+python-polib
+python-stdnum
+python-vatnumber
+odoo
+yay
+#+end_src
 
 ** Referencias
 - [[https://www.cs.dartmouth.edu/~campbell/cs50/shell.html][CS50]]
