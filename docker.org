@@ -1,0 +1,130 @@
+#+TITLE: Docker
+#+AUTHOR: Rodrigo Francisco
+#+DATE: 13-11-2021
+
+** ¿Qué es docker?
+
+*** ¿Qué es un container?
+
+- Una manera de empaquetar las aplicaciones con todas las dependencias y configuraciones necesarias.
+- Artefacto portable, fácil de compartir y mover.
+- Hace el desarrollo y lanzamiento más eficiente.
+
+Los contenedores se alojan en "Repositorios de contenedores" que pueden ser públicos o privados. Ver [[https://hub.docker.com/][Docker Hub]].
+
+**** Antes de los contenedores
+[[./DOCKER.assets/before-containers.png]]
+
+**** Después de los contenedores
+
+- Ambiente encapsulado.
+- Empaquetados con la configuración necesaria.
+- Un solo comando para instalar la aplicación.
+
+[[./DOCKER.assets/after-containers.png]]
+
+**** Imagen vs contenedor
+
+- Imagen: El paquete actual, no en ejecución
+- Contenedor: La aplicación lanzada, en ejecución
+
+Un *contenedor* es el ambiente ejecutado por una *imagen*
+Los contenedores tienen:
+- Sistema de archivos *virtual*
+- Puertos enlazados
+
+*** Empezando con los comandos
+
+- Ejecutar un contenedor
+  #+begin_src shell
+    docker run postgres:9.6
+    #Si la imagen no se encuentra localmente la descarga
+    #El comando descargara todas las capas necesitarias
+  #+end_src
+- Ver los contenedores que están corriendo.
+  #+begin_src shell
+    docker ps
+  #+end_src
+- Podemos correr una versión más actual de postgres
+  #+begin_src shell
+    docker run postgres:10.10
+    #Tarda menos porque tiene que descargar menos capas.
+  #+end_src
+** Docker vs Máquinas virtuales
+A nivel de sistema operativo se tienen las siguientes capas.
+[[./DOCKER.assets/os.png]]
+
+En cambio, docker y una máquina virtual, virtualizan lo siguiente:
+[[./DOCKER.assets/docker-vms.png]]
+
+Por lo tanto, las diferencias son:
+- Docker es muchísimo más ligero.
+- Docker es más rápido.
+- Compatibilidad, con las VMs se pueden correr todas las aplicaciones, sin embargo, no es lo mismo con docker.
+
+** Instalación de docker
+
+Los más importante a considerar es que si se esta usando para /Windows/ o /Mac/ se debe checar la compatibilidad en la documentación oficial de docker.
+
+Para windows, se deben tener en cuenta que:
+- Docker solo corre nativamente con /windows 10/
+- Si nuestra máquina con windows no es compatible, podemos usar /Docker toolbox/
+- Es importante que la computadora soporte /virtualización/
+
+** Principales comandos
+
+#+begin_src shell
+# Descargar una imagen
+docker pull redis
+
+# Ver las imagenes existentes
+docker images
+
+# Crearemos un contenedor de redis para iniciar redis
+docker run redis
+
+# Podemos ver los contenedores ejecutandose
+docker ps
+
+# Podemos ejecutar los contendores en forma "detach"
+docker -d redis
+
+# Detener un contendor
+docker stop <id>
+
+# Mostrar los contenedores que esten o NO corriendo
+docker ps -a
+
+# Iniciar un contenedor previamente detenido
+docker start <id>
+
+# Combina docker pull y docker start
+docker run redis:4.0
+
+# Para no tener conflictos debemos enlazar los contenedores
+# a puertos diferentes en nuestra máquina host.
+docker run -p <host-port>:<container-port> redis
+docker run -p 6000:6379 redis
+docker run -p 6001:6379 redis
+#+end_src
+
+** Container debbuing
+
+#+begin_src shell
+# Ver los logs
+docker logs <id>
+docker logs <name>
+
+# Crear contenedor con nombre
+docker run -d -p6000:6379 --name redis-latest redis
+docker run -d -p6001:6379 --name redis-older redis:4.0
+
+# Obtener la terminal del contenedor.
+# -it := interactive
+docker exec -it <id|name> /bin/bash
+#+end_src
+
+=docker run= crea el contenedor, =docker start= vuelve a empezar un contenedor previamente creado con =run=
+
+** Workflow con Docker
+[[./DOCKER.assets/workflow.png]]

@@ -598,3 +598,48 @@ Discos virtuales:
   + /home 5GB
   + /var 5GB
 - Configuración de red para tener salida a internet (0.25)
+
+*** Storage en virtualización
+
+ISCSI
+[[./README.assets/storage.png]]
+
+NFS:
+Compartimos un sistema de archivos, se comparte con los hipervisores.
+
+* Semana 09
+** Contenedores
+
+[[./README.assets/containers.png]]
+[[./README.assets/docker.png]]
+
+Historia de la separación entre las plataformas
+[[./README.assets/history.png]]
+
+* Semana 10
+** Docker
+
+#+begin_src shell
+mkdir /podman-httpd
+cd /podman-httpd
+vi Dockerfile
+yum install httpd
+podman build -t my-apache .
+podman images
+podman run -dit --name my-running-app -p 8080:80 my-apache
+podman ps
+curl localhost:8080
+podman inspect 782559ad620e | grep -i IPAddress
+#+end_src
+
+#+begin_src shell
+podman stop <container>
+podman rm <container>
+
+podman pull mariadb:latest
+podman image
+podman run --detach --name some-mariadb --env MARIADB_USER=example-user --env MARIADB_PASSWORD=my_cool_secret --env MARIADB_ROOT_PASSWORD=my-secret-pw  mariadb:latest
+
+docker run -it --rm mariadb mysql -h <server container IP> -u example-user -p
+docker exec -it some-mariadb bash
+#+end_src
