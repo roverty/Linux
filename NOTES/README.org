@@ -640,6 +640,18 @@ podman pull mariadb:latest
 podman image
 podman run --detach --name some-mariadb --env MARIADB_USER=example-user --env MARIADB_PASSWORD=my_cool_secret --env MARIADB_ROOT_PASSWORD=my-secret-pw  mariadb:latest
 
-docker run -it --rm mariadb mysql -h <server container IP> -u example-user -p
-docker exec -it some-mariadb bash
+podman ps
+
+podman run -it --rm mariadb mysql -h <server container IP> -u example-user -p
+podman exec -it some-mariadb bash
+
+podman inspect <ID> | grep -i IPaddress
+#+end_src
+
+Ejemplo Dockerfile
+#+begin_src shell
+FROM registry.access.redhat.com/rhel
+WORKDIR /opt
+RUN yum -y install python3
+ENTRYPOINT /usr/bin/python3 -m http.server 8000
 #+end_src
