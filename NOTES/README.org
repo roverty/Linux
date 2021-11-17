@@ -611,9 +611,11 @@ Compartimos un sistema de archivos, se comparte con los hipervisores.
 ** Contenedores
 
 [[./README.assets/containers.png]]
+
 [[./README.assets/docker.png]]
 
 Historia de la separación entre las plataformas
+
 [[./README.assets/history.png]]
 
 * Semana 10
