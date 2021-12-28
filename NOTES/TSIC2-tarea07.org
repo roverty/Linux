@@ -1,0 +1,48 @@
+#+TITLE: Diferencias entre administradores de contenedores
+#+AUTHOR: Rodrigo Francisco Pablo
+#+DATE:  <2021-12-03 Fri>
+#+LATEX_HEADER: \usepackage[total={17.5cm,23cm}, top=1.5cm, left=1.7cm]{geometry}
+#+LATEX_HEADER: \renewcommand{\familydefault}{\sfdefault}
+#+LATEX_HEADER: \renewcommand\thepage{}
+#+LATEX_HEADER: \parindent=0mm
+#+OPTIONS: num:nil toc:nil
+
+Comparativa de kubernetes, Rancher sause, Tanzu vmware, y Kubernetes, ezmeral HPE
+
+** Kubernetes vs Rancher Sauce
+
+Kubernetes pertenece a la categoría "Herramientas de contenedor" de la pila tecnológica, mientras que Sauce Labs se puede clasificar principalmente en "Pruebas de navegador".
+
+Algunas de las funciones que ofrece Kubernetes son:
+
+- Ligero, simple y accesible
+- Creado para un mundo de múltiples nubes, público, privado o híbrido
+- Altamente modular, diseñado para que todos sus componentes sean fácilmente intercambiables
+
+Por otro lado, Sauce Labs ofrece las siguientes características clave:
+
+- Más de 700 combinaciones de navegador / sistema operativo / dispositivo para pruebas entre navegadores y plataformas para mejorar la calidad de las aplicaciones web y móviles y eliminar la sobrecarga de la infraestructura interna
+- Nube bajo demanda altamente confiable para escalabilidad de nivel empresarial y seguridad estándar de la industria
+- Optimizado para marcos de prueba populares, sistemas de CI y herramientas y servicios circundantes
+
+** Kubernetes vs Tanzu VMware
+Kubernetes se ha vuelto esencial para las empresas que realizan la transición a contenedores y al desarrollo nativo en la nube. Agregar Kubernetes a su infraestructura no tiene por qué agregar complejidad. Crear e implementar aplicaciones modernas en contenedores es fácil con VMware Tanzu.
+
+Con VMware Tanzu, puede *preparar su infraestructura para aplicaciones modernas con Kubernetes, y centralizar el ciclo de vida y la administración de políticas para todos los clústeres* de Kubernetes, independientemente de dónde residan.
+
+VMware Tanzu Advanced *simplifica y asegura el ciclo de vida del contenedor* para acelerar la entrega de aplicaciones modernas a escala. Con sus capacidades modulares de pila completa, puede adoptar DevSecOps y crear una plataforma para aplicaciones modernas que garantice la seguridad durante todo el ciclo de vida del contenedor. Cree automáticamente un flujo de contenedores compatibles. *Asegura su cadena de suministro de software de punta a punta*. Y ponga en funcionamiento contenedores y clústeres en las nubes.
+
+** Kubernetes vs ezmeral HPE
+
+HPE presenta Ezmeral, como respuesta a Tanzu y OpenShift, pero con hardware. *Es una especie de nube híbrida instantánea, una forma uniforme y de pago por uso para implementar Kubernetes en cualquier lugar*.
+
+Es una especie de plataforma de nube híbrida instantánea, que se ofrecerá a los clientes empresariales en "bloques de construcción", dándoles una única nube que incorpora servidores locales y ubicados que ya poseen, además de servidores HPE diseñados para la colocación y el perímetro.
+
+HPE ahora está dando los primeros pasos para hacer que Ezmeral esté disponible de forma generalizada. También ha rebautizado su HPE Container Platform existente como HPE Ezmeral Container Platform y la está ofreciendo a los clientes beta solicitantes para que la prueben a través de GreenLake, con la intención de lanzarla en general en el cuarto trimestre.
+
+** Referencias
+
+- https://stackshare.io/stackups/kubernetes-vs-sauce-labs
+- https://tanzu.vmware.com/kubernetes-vs-docker
+- https://www.datacenterknowledge.com/
+  hewlett-packard-enterprise/hpe-unveils-ezmeral-its-answer-tanzu-and-openshift-hardware

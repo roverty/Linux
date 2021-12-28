@@ -1,0 +1,26 @@
+#+TITLE: Kubernetes
+#+AUTHOR: Rodrigo Francisco Pablo
+#+DATE:  <2021-12-03 Fri>
+#+LATEX_HEADER: \usepackage[total={17.5cm,23cm}, top=1.5cm, left=1.7cm]{geometry}
+#+LATEX_HEADER: \renewcommand{\familydefault}{\sfdefault}
+#+LATEX_HEADER: \renewcommand\thepage{}
+#+LATEX_HEADER: \parindent=0mm
+#+OPTIONS: num:nil toc:nil
+
+Para este laboratorio se hicieron 3 cosas principalmente:
+
+- Se crean las máquinas virtuales con Ubuntu
+- Se realizaron todas las configuraciones necesarias para tener =kubernetes= en el sistema y =ssh=
+- Se clonaron las máquinas virtuales y se cambio el nombre de cada host para ser más reconocible.
+- Se lanzo el nodo maestro en servidor 1
+- Se lanzaron 2 nodos workers en los servidores 2 y 3 respectivamente.
+
+El resultado se muestra a continuación:
+
+#+ATTR_LATEX: :width \textwidth
+#+ATTR_ORG: :width 50
+[[./t08.assets/kubernetes.png]]
+
+En la imagen anterior se muestra del lado izquierdo el nodo maestro. Se puede apreciar que le corresponde la ip =192.168.1.71=.
+Mientras que del lado derecho, podemos observar 2 nodos workers que se han unido al clúster creado por el nodo maestro.
+De ellos también se puede apreciar la dirección, =192.168.1.76= y =192.168.1.77=, respectivamente.

@@ -657,3 +657,29 @@ WORKDIR /opt
 RUN yum -y install python3
 ENTRYPOINT /usr/bin/python3 -m http.server 8000
 #+end_src
+
+* Semana 11
+
+Un *pod* es un contenedor de contenedores.
+
+#+begin_src shell
+podman pod create
+
+podman pod create -n proyecto
+
+podman pod list
+
+# Agregar un contenedor al pod
+podman run -d -it --pod proyecto -n webserver001 --net net_proy httpd:2.4
+
+podman pod list
+
+#Generar archivo
+podman generate systemd --files --name proyecto
+
+#Copy services
+systemctl enable --user pod-proyecto.service
+
+# reboot para confirmar
+
+#+end_src

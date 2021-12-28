@@ -1,0 +1,21 @@
+#+TITLE: Kubernetes, práctica 2
+#+AUTHOR: Rodrigo Francisco Pablo
+#+DATE:  <2021-12-09 Fri>
+#+LATEX_HEADER: \usepackage[total={17.5cm,23cm}, top=1.5cm, left=1.7cm]{geometry}
+#+LATEX_HEADER: \renewcommand{\familydefault}{\sfdefault}
+#+LATEX_HEADER: \renewcommand\thepage{}
+#+LATEX_HEADER: \parindent=0mm
+#+OPTIONS: num:nil toc:nil
+
+Para este laboratorio se hicieron 3 cosas principalmente:
+
+- Se trabajo con archivos =.yml= para la configuración de los pods.
+- Este ejemplo muestra como 2 pods distintos se pueden comunicar entre ellos.
+
+El resultado se muestra a continuación:
+
+#+ATTR_LATEX: :width \textwidth
+#+ATTR_ORG: :width 50
+[[./t09.assets/evidencia.png]]
+
+En la imagen anterior se muestra los logs de =busybox2=, el cual era el contenedor encargado de recibir la información de =busybox1=, el cual, siemplemente escribe /success/, cada 5 segundos.
